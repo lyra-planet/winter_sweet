@@ -1,0 +1,19 @@
+
+.backtohome{
+    background-color: var(--Middle); 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    min-height: 70px;
+    transition: all 0.3s;
+    position:fixed;
+    left: 30px;
+    bottom: 30px; 
+}
+.backtohome:hover{
+    transform: scale(120%);
+}

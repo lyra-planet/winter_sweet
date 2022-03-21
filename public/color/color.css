@@ -1,0 +1,74 @@
+/* 
+负责全局的颜色
+*/
+
+/* 冬天 */
+html[data-theme='winter']:root {
+    --IconDeep: #f1939c81;
+    --IconMiddle: #f1939cb0;
+    --IconShallow: #f1939cde;
+    --Deep: #f55e69;
+    --Middle: #f1939c;
+    --Shallow: #f0a1a8;
+    --Light: #ff9eaf;
+    --SuperLight: #ffb2c9;
+    --LinearGradient: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+}
+/* 秋天 */
+html[data-theme='autumn']:root {
+    --IconDeep: #ffa70fd5;
+    --IconMiddle: #fcc307b9;
+    --IconShallow: #f9d27da2;
+    --Deep: #ffa60f;
+    --Middle: #fcc307;
+    --Shallow: #f9d27d;
+    --Light: #ffd30f;
+    --SuperLight: #fcf807;
+    --LinearGradient: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+}
+/* 夏天 */
+html[data-theme='summer']:root {
+    --IconDeep: #2485b9c7;
+    --IconMiddle: #5697c3a6;
+    --IconShallow: #5cb4cc9a;
+    --Deep: #1177b0;
+    --Middle: #2486b9;
+    --Shallow: #2f90b9;
+    --Light: #66a9c9;
+    --SuperLight: #85c6e4;
+    --LinearGradient:linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+/* 春天 */
+html[data-theme='spring']:root {
+    --IconDeep: #229453c7;
+    --IconMiddle: #20a163c9;
+    --IconShallow: #66c18cb6;
+    --Deep: #207f4c;
+    --Middle: #40a070;
+    --Shallow: #55bb8a;
+    --Light: #5bc08a;
+    --SuperLight: #79e0a4;
+    --LinearGradient:linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+}
+
+
+
+:root {
+    /* 基础颜色 */
+    --Snow: #fff;
+    --Night: #000;
+    --LightNight: rgb(34, 34, 34);
+    --DeepGray: rgb(131, 131, 131);
+    --Gray: rgb(235, 235, 235);
+    --TextGray: rgb(44, 44, 44);
+
+    --IconDeep: #f1939c81;
+    --IconMiddle: #f1939cb0;
+    --IconShallow: #f1939cde;
+    --Deep: #f55e69;
+    --Middle: #f1939c;
+    --Shallow: #f0a1a8;
+    --Light: #ff9eaf;
+    --SuperLight: rgb(255, 232, 237);
+    --LinearGradient: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+}

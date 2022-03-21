@@ -1,0 +1,39 @@
+.bottomnav{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    /* line-height: 30px; */
+    height: 100px;
+    padding-bottom: 20px;
+}
+.bottomnav::before{
+    content: '';
+    display: block;
+    background-color: var(--Snow);
+    width: 100%;
+    height: 1px;
+    margin-bottom: 20px;
+}
+.bottomnav .bottomnavtop{
+    display: flex;
+}
+.bottomnav .bottomnavtop .author{
+    color: var(--Deep);
+}
+
+.bottomnav .bottomnavmiddle{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+}
+
+.bottomnav .bottomnavmiddle>div{
+    margin:0 4px;
+}
+
+.react span{
+    margin:0 4px;
+    color:rgb(97,218,251);
+}

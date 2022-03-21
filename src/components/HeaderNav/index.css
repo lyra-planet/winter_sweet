@@ -1,0 +1,61 @@
+@import url('../../App.css');
+.headernav{
+    /* width: 100%; */
+
+    height: 60px;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding:0 14px;
+    opacity: 0.9;
+    text-align: center;
+    line-height: 60px;
+    font-size: 20px;
+    font-weight: 500;
+    color:var(--Snow);
+    position:fixed;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s;
+}
+.headernav.active{
+    background-color:var(--Snow);
+    color:var(--TextGray);
+}
+.headernav.active .link{
+        color: var(--TetGray);
+        text-decoration: none;
+}
+.headernav>.title{
+    cursor: pointer;
+}
+.headernav>.linkcontainer{
+display: flex;
+}
+.headernav>.linkcontainer>li{
+    display: block;
+    text-align: center;
+    margin-left: 15px;
+    cursor: pointer;
+
+}
+.link{
+    color: var(--Snow);
+    text-decoration: none;
+}
+.headernav>.linkcontainer>li::after,
+.headernav>.title::after{
+    content: '';
+    display: block;
+    height: 3px;
+    width: 0%;
+    transform: translateY(-10px);
+    background-color:var(--Middle);
+    transition: all 0.2s;
+}
+.headernav>.linkcontainer>li:hover::after,
+.headernav>.title:hover::after{
+    width: 100%;
+}

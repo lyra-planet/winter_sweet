@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react'
+import Router from './router/router.js'
+import './App.css'
+export default class App extends Component {
+    styles = {
+        scroll:{
+            '::webkitScrollbar':{
+                width:'10px',
+                height:'2px'
+            }
+        }
+    }
+    handleScroll(e){
+        // let scroll = this.styles.scroll['&::webkit-scrollbar'].width
+        // if(scroll==='0px'){
+        //     this.styles.scroll['&::webkit-scrollbar'].width='10px'
+        // }
+    }
+    
+  render() {
+    return (
+      <div className='wholecontainer' style={this.styles.scroll} onWheel={(e)=>this.handleScroll(e)}>
+          <Router/>
+      </div>
+    )
+  }
 }
-
-export default App;

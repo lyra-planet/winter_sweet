@@ -1,0 +1,94 @@
+.blogpage{
+display: flex;
+/* background-image: url('../../../source/img/HomePageBackground.png'); */
+background-color: rgb(255, 232, 237);
+background-attachment: fixed;
+width: 100%;
+}
+.blogpagebox{
+    margin-top: 20px;
+    display: flex;
+    justify-content:space-between;
+}
+
+/* left */
+.blogpagebox .left{
+    background-color: rgba(255,255,255,0.98);
+    box-shadow: 0 0 2px rgba(0,0,0, 0.3);
+    margin-right: 20px;
+    margin-left: 10px;
+    transition: all 0.3s;
+    position: sticky;
+    top: 80px;
+
+    height: 500px;
+    flex-grow: 2;
+    width: 30%;
+    max-width: 300px;
+}
+
+.blogpagebox .left:hover{
+    box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+}
+
+
+
+/* middle */
+.blogpagebox .middle{
+    /* width: 300px; */
+    flex-grow: 3;
+    width: 60%;
+}
+.blogpagebox .middle .content{
+    background-color: rgba(255,255,255,0.98);
+
+    box-shadow: 0 0 2px rgba(0,0,0, 0.3);
+    padding:40px 80px;
+    transition: all 0.3s;
+}
+.blogpagebox .middle .content:hover{
+    box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+}
+
+/* middletop */
+.blogpagebox .middle .middletop{
+    height: 200px;
+    margin-bottom: 10px;
+    background-color: rgba(255,255,255,0.98);
+    box-shadow: 0 0 2px rgba(0,0,0, 0.3);
+    transition: all 0.3s;
+}
+.blogpagebox .middle .middletop:hover{
+    box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+}
+.blogpagebox .middle .middletop .title{
+    font-size: 100px;
+}
+
+
+
+
+
+
+
+
+
+/* right */
+.blogpagebox .right{
+    background-color: rgba(255,255,255,0.98);
+    box-shadow: 0 0 2px rgba(0,0,0, 0.3);
+    width: 30%;
+    max-width: 300px;
+    margin-right: 10px;
+    margin-left: 20px;
+    position: sticky;
+    top: 80px;
+
+    height: 500px;
+    transition: all 0.3s;
+    flex-grow: 3;
+}
+
+.blogpagebox .right:hover{
+    box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+}
