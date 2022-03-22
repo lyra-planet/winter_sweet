@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Anchor } from 'antd';
 import { DownOutlined, GithubOutlined } from '@ant-design/icons'
 import HeaderNav from '../../components/HeaderNav'
@@ -6,13 +6,35 @@ import BotttomNav from '../../components/BottomNav'
 import api from '../../api'
 import BACKTOP from '../../components/BackTop'
 import BlogList from '../../components/BlogList'
+
 import './index.css'
+import '../../components/IconUse'
+
+
+
+
+
+
+
+
+
+
 export default class BlogPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      index: 1
+      index: 1,
+      bloglist: {},
+      length: '',
     }
+  }
+  style = {
+    'width': '30px',
+    'height': '30px',
+  }
+  followMeStyle = {
+    'width': '20px',
+    'height': '20px',
   }
 
   componentDidMount() {
@@ -20,27 +42,50 @@ export default class BlogPage extends Component {
       let yiyan = document.getElementById('yiyan')
       yiyan.innerText = res.data.text
     })
-
   }
 
-
-
+  // 从BlogList获取数据
+  handleData = (bloglistdata) => {
+    console.log(bloglistdata.typedata.length)
+    this.setState({ bloglist: bloglistdata })
+    // 设置迷你归档
+    const mini_archive_article = document.getElementById('mini-archive-article')
+    const mini_archive_type = document.getElementById('mini-archive-type')
+    const mini_archive_class = document.getElementById('mini-archive-class')
+    mini_archive_article.innerText = bloglistdata.length
+    mini_archive_type.innerText = bloglistdata.typedata.length
+    mini_archive_class.innerText = bloglistdata.typedata.length
+  }
 
   //头像点击转动样式
-  Rotate = () => {
+  Rotate = (i = 0) => {
     if (this.state.index == 1) {
-      let avatar = document.querySelector('.avatar')
+      let avatar = document.querySelectorAll('.avatar')
       setTimeout(() => {
-        avatar.style.animation = ('myfirst2 1s  ease')
+
+        avatar[i].style.animation = ('myfirst2 1s  ease')
+
+
       }, 1)
-      avatar.style.animation = ('none')
+      avatar[i].style.animation = ('none')
+
+
     }
   }
+  Rotate2 = (i = 0) => {
+    if (this.state.index == 1) {
+      let avatar = document.querySelectorAll('.avatar')
+      setTimeout(() => {
+
+        avatar[i].style.animation = ('myfirst 1s  ease')
 
 
+      }, 1)
+      avatar[i].style.animation = ('none')
 
 
-
+    }
+  }
 
   render() {
     const { Link } = Anchor
@@ -51,13 +96,13 @@ export default class BlogPage extends Component {
         {/* 顶部容器 */}
         <div className="topwrap">
           <div className="name">
-            <div className='avatar' onClick={this.Rotate}></div>
+            <div className='avatar' onClick={() => this.Rotate(0)}></div>
             <span>Lyra的秘密基地</span>
             <div id="yiyan"></div>
           </div>
           <div className='topbottom'>
             <div className="down">
-              <Link href="#blogcontainer" title={<DownOutlined style={{ 'font-size': '30px', 'font-weight': '900', 'color': '#fff' }} />}>
+              <Link href="#blogcontainer" title={<DownOutlined style={{ 'fontSize': '30px', 'fontWeight': '900', 'color': '#fff' }} />}>
 
               </Link>
             </div>
@@ -67,7 +112,7 @@ export default class BlogPage extends Component {
         <div className="middlepage">
           {/*博客表单  */}
           <div id='blogcontainer' className="blogcontainer">
-            <BlogList />
+            <BlogList handleData={this.handleData.bind(this)} />
           </div>
 
 
@@ -76,57 +121,99 @@ export default class BlogPage extends Component {
             {/* 个人简介 */}
             <div className="myself">
               {/* 头像 */}
-              <div className="avatar">
-
-              </div>
+              <div className="avatar" onClick={() => this.Rotate2(1)}></div>
+              <h1>Lyra</h1>
               {/* 个人简介 */}
-              <span></span>
+              <span>来自星空的美少女</span>
               {/* 迷你归档 */}
               <ul className="miniarchive">
-                <li id='mini-archive-article'>
+                <li>
                   <span>文章</span>
-                  <span>12</span>
+                  <div id='mini-archive-article'>{this.state.bloglist.length}</div>
                 </li>
-                <li id='mini-archive-type'>
+                <li>
                   <span>标签</span>
-                  <span>3</span>
+                  <div id='mini-archive-type'></div>
                 </li>
-                <li id='mini-archive-class'>
+                <li>
                   <span>分类</span>
-                  <span>3</span>
+                  <div id='mini-archive-class'>3</div>
                 </li>
               </ul>
               {/* followme */}
               <a href="#" className="followme">
-                <GithubOutlined />Follow Me
+                <div className="text">
+                  <svg className='icon-followme' style={this.followMeStyle}>
+                    <use xlinkHref='#github-white' />
+                  </svg>Follow Me
+                </div>
               </a>
+
               {/* Links */}
               <ul className="links">
                 {/* QQ */}
-                <li><a href="#"></a></li>
+                <li><a href="#">
+                  <svg className='icon' style={{ ...this.style, 'fill': '#12B7F5' }}>
+                    <use xlinkHref='#qq' />
+                  </svg>
+                </a></li>
                 {/* 微信 */}
-                <li><a href="#"></a></li>
+                <li><a href="#">
+                  <svg className='icon' style={{ ...this.style, 'fill': '#1AAD19' }}>
+                    <use xlinkHref='#wechat' />
+                  </svg>
+                </a></li>
                 {/* 哔哩哔哩 */}
-                <li><a href="#"><svg>
-                  <use xlink:href=''></use>
-                  </svg></a></li>
+                <li>
+                  <a href="#">
+                    <svg className='icon' style={{ ...this.style, 'fill': '#FF8EB3' }}>
+                      <use xlinkHref='#bilibili' />
+                    </svg>
+                  </a>
+                </li>
                 {/* Github */}
-                <li><a href="#"></a></li>
+                <li><a href="#">
+                  <svg className='icon' style={{ ...this.style, 'fill': '#6e5494' }}>
+                    <use xlinkHref='#github' />
+                  </svg>
+                </a></li>
                 {/* 知乎 */}
-                <li><a href="#"></a></li>
-                {/* Tg */}
-                <li><a href="#"></a></li>
+                <li><a href="#">
+                  <svg className='icon' style={{ ...this.style, 'fill': '#0084FF' }}>
+                    <use xlinkHref='#zhihu' />
+                  </svg>
+                </a></li>
+                {/* Telegram */}
+                <li><a href="#">
+                  <svg className='icon' style={{ ...this.style, 'fill': '#0088CC' }}>
+                    <use xlinkHref='#telegram' />
+                  </svg>
+                </a></li>
                 {/* Twitter */}
-                <li><a href="#"></a></li>
+                <li><a href="#">
+                  <svg className='icon' style={{ ...this.style, 'fill': '#1da1f2' }}>
+                    <use xlinkHref='#twitter' />
+                  </svg>
+                </a></li>
                 {/* 网易云 */}
-                <li><a href="#"></a></li>
+                <li><a href="#">
+                  <svg className='icon' style={{ ...this.style, 'fill': '#C20C0C' }}>
+                    <use xlinkHref='#netease' />
+                  </svg></a></li>
                 {/* 邮箱 */}
-                <li><a href="#"></a></li>
+                <li><a href="#">
+                  <svg className='icon' style={{ ...this.style, 'fill': '#8E71C1' }}>
+                    <use xlinkHref='#email' />
+                  </svg></a></li>
                 {/* QQ群 小星球 */}
-                <li><a href="#"></a></li>
+                <li><a href="#">
+                  <svg className='icon' style={{ ...this.style, 'fill': '#6699CC' }}>
+                    <use xlinkHref='#planet' />
+                  </svg></a></li>
               </ul>
             </div>
             {/* 归档预览 */}
+
           </div>
         </div>
 

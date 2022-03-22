@@ -52,7 +52,7 @@ display: flex;
     height: 3px;
     width: 0%;
     transform: translateY(-10px);
-    background-color:var(--Middle);
+    background-color:var(--Deep);
     transition: all 0.2s;
 }
 .headernav>.linkcontainer>li:hover::after,

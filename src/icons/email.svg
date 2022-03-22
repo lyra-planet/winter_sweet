@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1647870340210"
+    id='email' class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2255"
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="26" height="26">
+    <defs>
+        <style type="text/css">
+            @font-face {
+                font-family: feedback-iconfont;
+                src: url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff2?t=1630033759944") format("woff2"), url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff?t=1630033759944") format("woff"), url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.ttf?t=1630033759944") format("truetype");
+            }
+        </style>
+    </defs>
+    <path
+        d="M896 128 128 128C57.408 128 0 185.408 0 256l0 512c0 70.592 57.408 128 128 128l768 0c70.592 0 128-57.408 128-128L1024 256C1024 185.408 966.592 128 896 128zM896 192c6.272 0 11.904 1.856 17.6 3.584L534.976 570.24C522.56 582.656 501.376 582.656 488.832 570.304L108.032 196.032C114.432 193.92 120.96 192 128 192L896 192zM960 768c0 35.328-28.672 64-64 64L128 832c-35.264 0-64-28.672-64-64L64 256c0-4.032 1.536-7.488 2.304-11.264l377.664 371.2c18.752 18.432 43.328 27.712 67.968 27.712 24.704 0 49.344-9.344 68.096-27.904l377.28-373.312C958.272 246.912 960 251.2 960 256L960 768z"
+        p-id="2256"></path>
+</svg>

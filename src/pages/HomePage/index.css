@@ -42,7 +42,11 @@
     from {transform: rotate(0deg) scale(120%); }
     to {transform: rotate(359deg) scale(120%);}
 }
-
+@keyframes myfirst
+{
+    from {transform: rotate(0deg) ; }
+    to {transform: rotate(359deg);}
+}
 
 .name span{
 cursor: pointer;
@@ -78,8 +82,8 @@ transition: all 0.3s;
 }
 @keyframes down
 {
-    from {transform:translateY(0px); }
-    to {transform:translateY(10px) ;}
+    from {transform:translateY(0px);opacity: 0.6; }
+    to {transform:translateY(10px);opacity: 1;}
 }
 #yiyan{
     text-align: center;
@@ -112,15 +116,127 @@ display: flex;
 justify-content: center;
 }
 
-.middlepage .right{
+.right .myself{
+    /* justify-content: center; */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
     border-radius: 20px;
     margin-top: 60px;
     top: 80px;
     position: sticky;
-    width: 300px;
-    min-width: 300px;
-    height: 700px;
+    width: 240px;
+    min-width: 200px;
+    height: 400px;
+    color: var(--TextGray);
+    transition: all 0.3s;
     background-color: rgba(255,255,255,0.98);
-    box-shadow: 0 0 10px rgba(0,0,0, 0.3);
-    background-image: url();
+    box-shadow: 0 0 3px rgba(0,0,0, 0.2);
+
+}
+
+.right .myself:hover{
+    box-shadow: 0 0 10px rgba(0,0,0, 0.2);
+        transform: scale(101%) translateY(-2px);
+}
+
+/* 右侧头像 */
+.right .myself .avatar{
+    width: 120px;
+    height: 120px;
+    min-height: 120px;
+    min-width: 120px;
+    background-image: url('../../../source/img/avatar.jpg');
+    background-size: contain;
+    border-radius: 50%;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.right .myself .miniarchive{
+    color: var(--TextGray);
+    width: 90%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+.right .myself .miniarchive li{
+    color: var(--TextGray);
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 18px;
+}
+.right .myself .miniarchive li div{
+    color: var(--TextGray);
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: 700;
+}
+.right .myself .links{
+    color: var(--TextGray);
+    margin-top: 10px;
+    display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.links li{
+margin: 3px;
+}
+
+.right .myself h1{
+    font-size: 30px;
+}
+.right .myself>span{
+    margin: 8px 0px 10px 0px;
+    font-size: 18px;
+}
+.right .myself .followme{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin: 10px;
+    color: #fff;
+    height: 30px;
+    background-color: #FF6666;
+    position: relative;
+    transition: all 0.2s;
+}
+.right .myself .followme .text{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+.right .myself .followme::after{
+    content: '';
+    position: absolute;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 0%;
+    left: 0;
+    top: 0;
+
+    color: #fff;
+    height: 30px;
+    background-color: #6966ff;
+    transition: all 0.2s ease;
+}
+.right .myself .followme:hover::after{
+    width: 100%;
+}
+.icon-followme:last-of-type{
+fill: #fff;
+}
+.links .icon:last-of-type{
+    transition: all 0.2s;
+}
+.links .icon:last-of-type:hover{
+    transform: scale(120%);
 }

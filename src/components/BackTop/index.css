@@ -9,7 +9,7 @@
     text-align: center;
     line-height: 70px;
     font-size: 30px;
-    background-color: var(--Middle);
+    background-color:var(--Deep);
     cursor: pointer;
     transform: scale(0%);
     transition: all 0.2s;

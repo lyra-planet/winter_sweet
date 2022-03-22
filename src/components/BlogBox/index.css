@@ -3,15 +3,19 @@
     width: 800px;
     padding: 20px;
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     margin-bottom: 40px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s;
 }
-
+.blogbox:hover{
+    transform: scale(101%) translateY(-2px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 .blog{
     height: 100%;
     width: 100%;
@@ -45,7 +49,7 @@ width: 80%;
     transition: all 0.2s;
 }
 .textbox>.title:hover{
-    color: var(--Middle);
+    color: var(--Deep);
     transform: scale(110%);
 }
 
@@ -61,10 +65,11 @@ width: 80%;
     font-size: 15px;
     align-items:center;
     transition: all 0.2s;
+    text-align: center;
 }
 .textbox>.textfun>li:hover{
     transform: scale(102%);
-    color: var(--Middle);
+    color: var(--Deep);
 }
 
 .textbox>.content{
@@ -80,7 +85,7 @@ width: 80%;
     display: block;
     width: 100%;
     height:1px;  
-    background-color: var(--Middle);
+    background-color: var(--Deep);
 }
 .archive{
     margin-top: 20px;
@@ -115,13 +120,20 @@ width: 80%;
 .archivelinkbox:hover .archivecontent{
     color: var(--Snow);
 }
+.archivelinkboxbox{
+    height: 10px;
+    align-items: center;
+    width: 120px;
+    display: flex;
+}
 .archivelinkbox::after{
     content: '';
     display: block;
+    border-radius: 4px;
     position: absolute;
     width: 0%;
     height: 100%;
-    background-color: var(--Light);
+    background-color: var(--Deep);
     top: 0;
     left: 0;
     z-index: -1;
@@ -130,4 +142,11 @@ width: 80%;
 }
 .archivelinkbox:hover::after{
     width: 100%;
+}
+
+.icon-type{
+    transform: translateY(1px);
+    width: 17px;
+    height: 17px;
+    fill: var(--TextGray);
 }
