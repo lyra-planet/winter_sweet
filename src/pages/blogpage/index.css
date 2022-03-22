@@ -20,11 +20,11 @@ width: 100%;
     transition: all 0.3s;
     position: sticky;
     top: 80px;
-
     height: 500px;
     flex-grow: 2;
     width: 30%;
     max-width: 300px;
+    border-radius: 20px;
 }
 
 .blogpagebox .left:hover{
@@ -38,8 +38,10 @@ width: 100%;
     /* width: 300px; */
     flex-grow: 3;
     width: 60%;
+    border-radius: 20px;
 }
 .blogpagebox .middle .content{
+    border-radius: 20px;
     background-color: rgba(255,255,255,0.98);
 
     box-shadow: 0 0 2px rgba(0,0,0, 0.3);
@@ -79,12 +81,12 @@ width: 100%;
     box-shadow: 0 0 2px rgba(0,0,0, 0.3);
     width: 30%;
     max-width: 300px;
+    min-width: 300px;
     margin-right: 10px;
     margin-left: 20px;
     position: sticky;
     top: 80px;
-
-    height: 500px;
+    border-radius: 20px;
     transition: all 0.3s;
     flex-grow: 3;
 }

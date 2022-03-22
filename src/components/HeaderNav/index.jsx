@@ -8,10 +8,11 @@ export default class index extends Component {
             time:''
         }
     }
-    componentDidMount(){
+    componentDidUpdate(){
         window.addEventListener('scroll',this.headerNavChange)
     }
     headerNavChange=()=>{
+        console.log(1)
         let scrollTop = document.documentElement.scrollTop
         let headernav = document.getElementById('headernav')
         if(scrollTop!=0){

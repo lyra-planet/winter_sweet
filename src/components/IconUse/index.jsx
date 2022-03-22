@@ -22,3 +22,5 @@ require('../../icons/email.svg')
 require('../../icons/planet.svg')
 // 归类
 require('../../icons/type.svg')
+// 最新更新
+require('../../icons/latest-update.svg')

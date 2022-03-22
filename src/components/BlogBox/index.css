@@ -19,8 +19,8 @@
 .blog{
     height: 100%;
     width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
+    border-radius: 20px;
+    /* overflow: hidden; */
     display: flex;
     position: relative;
     display: flex;

@@ -4,13 +4,13 @@
     justify-content:space-around;
     align-items: center;
     /* line-height: 30px; */
-    height: 100px;
+    height: 200px;
     padding-bottom: 20px;
 }
 .bottomnav::before{
     content: '';
     display: block;
-    background-color: var(--Snow);
+    background-color: rgb(214, 214, 214);
     width: 100%;
     height: 1px;
     margin-bottom: 20px;

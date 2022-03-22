@@ -1,32 +1,37 @@
 
 @import url('https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css');
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('../src/components/CustomCursor/index.css');
-body::-webkit-scrollbar{
-    display: none;
+
+::-webkit-scrollbar{
+    width: 4px;
+    height: 4px;
 }
-.wholecontainer::-webkit-scrollbar{
-    width: 8px;
+::-webkit-scrollbar-track-piece{
+    background-color: rgb(255, 232, 237)
 }
-.wholecontainer::-webkit-scrollbar-track-piece{
-    background-color: aliceblue;
-}
-.wholecontainer::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb{
     height: 10px;
     border-radius: 10px;
     background-color:var(--Middle);
 }
 
 .wholecontainer{
-  font-family: 'Muli',sans-serif;
+  font-family: 'SawarabiMincho',sans-serif;
   min-width: 550px;
   font-weight: 500;
   box-sizing: border-box;
   position: relative;
-  width: 100%;
   padding-right:0px;
   z-index: 1;
-  height: 1000px;
   background-color: rgb(255, 232, 237) !important;
-  height: 100%;
+/* height: 100%; */
+
+
+}
+body{
+    margin: 0;
+    padding: 0;
+    /* height:100%; */
+    /* overflow:scroll; */
+    overflow-x: hidden;
 }

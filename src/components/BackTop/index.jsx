@@ -3,7 +3,7 @@ import {BackTop} from 'antd'
 import './index.css'
 export default class BACKTOP extends Component {
 
-    componentDidMount(){
+  componentDidUpdate(){
         window.addEventListener('scroll',this.bindHandleScroll)
         let backtop = document.querySelector('.backtop')
         backtop.onmouseenter=()=>{
@@ -24,7 +24,7 @@ export default class BACKTOP extends Component {
       }
     render() {
     return (
-      <div className="backtop">
+      <div id="backtop" className="backtop">
       <BackTop visibilityHeight={-100}>
        UP
       </BackTop>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Comments from '../Comments'
 import { UserOutlined, CalendarOutlined, HeartOutlined, FolderOutlined } from '@ant-design/icons'
 import './index.css'
 import '../IconUse'
@@ -26,7 +27,10 @@ export default class BlogBox extends Component {
                                 {/* 写作日期 */}
                                 <li className='date'><CalendarOutlined />&nbsp;{time}</li>
                                 {/* 阅读次数 */}
-                                <li className='readnum'><HeartOutlined />&nbsp;阅读次数:1</li>
+                                <span id={`/blogpage/${encodeURI(title)}`} className="leancloud_visitors" data-flag-title={title}>
+                                    <em className="post-meta-item-text">阅读量 </em>
+                                    <i className="leancloud-visitors-count">10000</i>
+                                </span>
                             </div>
                             {/* 文章内容 */}
                             <li className='content' id={title}></li>
@@ -54,6 +58,12 @@ export default class BlogBox extends Component {
                             </Link>
                         </div>
                     </div>
+                </div>
+
+
+                {/* 进行评论系统的加载 */}
+                <div className="comments-none" style={{ 'display': 'none' }}>
+                    <Comments/>
                 </div>
             </div>
         )

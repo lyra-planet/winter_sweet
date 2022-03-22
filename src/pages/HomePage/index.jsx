@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Anchor } from 'antd';
+import Typed from 'typed.js'
+
 import { DownOutlined, GithubOutlined } from '@ant-design/icons'
+import './index.css'
+import '../../components/IconUse'
+
 import HeaderNav from '../../components/HeaderNav'
 import BotttomNav from '../../components/BottomNav'
 import api from '../../api'
 import BACKTOP from '../../components/BackTop'
 import BlogList from '../../components/BlogList'
-
-import './index.css'
-import '../../components/IconUse'
-
-
-
-
-
-
-
-
+import BlogPreviewList from '../../components/BlogPreviewList'
 
 
 export default class BlogPage extends Component {
@@ -26,6 +22,12 @@ export default class BlogPage extends Component {
       index: 1,
       bloglist: {},
       length: '',
+      // BlogListCopy
+      pattern: /<p>[\s\S]*?<\/p>/,
+      blogdata: [],
+      blogpattern: [],
+      blogdatadeliver: false
+      /////////////
     }
   }
   style = {
@@ -39,24 +41,68 @@ export default class BlogPage extends Component {
 
   componentDidMount() {
     api.yiyan().then(res => {
-      let yiyan = document.getElementById('yiyan')
-      yiyan.innerText = res.data.text
+      var options = {
+        strings: [res.data.text],
+        typeSpeed: 50
+      }
+      var typed = new Typed('#yiyan', options)
     })
+    //从服务器获取数据并处理分发数据
+    api.getmdfile().then(res => {
+      let blogdata = res.data.map(data => {
+        let patterned = data.match(this.state.pattern)[0]
+        let patternedArray = patterned.replace('<p>', '').replace('</p>', '').split(/[\s:]/g)
+        let title = patternedArray[3]
+        let time = patternedArray[7]
+        let type = patternedArray[13]
+        return {
+          title,
+          time,
+          type,
+          review: data.replace(patterned, '').replace('<hr>\n\n<hr>', '').match(/[\s\S]*<!-- more -->/),
+          data: data.replace(patterned, '').replace('<hr>\n\n<hr>', '')
+        }
+      })
+      let typedata = []
+      blogdata.forEach(blog => {
+        if (typedata.length == 0) {
+          typedata.push(blog.type)
+        } else {
+          let count = 0
+          for (let i = 0; i < typedata.length; i++) {
+            if (typedata[i] != blog.type) {
+              count++
+            }
+          }
+          if (count == typedata.length) {
+            typedata.push(blog.type)
+          }
+        }
+      })
+      let data = {
+        fulldata: blogdata,
+        typedata: typedata,
+      }
+      this.setState({ blogdata })
+      this.setState({ blogdatadeliver: true })
+      this.handleData(data)
+    }).catch(err => { console.log(err) })
+    //////////////
   }
+
+
 
   // 从BlogList获取数据
   handleData = (bloglistdata) => {
-    console.log(bloglistdata.typedata.length)
     this.setState({ bloglist: bloglistdata })
     // 设置迷你归档
     const mini_archive_article = document.getElementById('mini-archive-article')
     const mini_archive_type = document.getElementById('mini-archive-type')
     const mini_archive_class = document.getElementById('mini-archive-class')
-    mini_archive_article.innerText = bloglistdata.length
+    mini_archive_article.innerText = bloglistdata.fulldata.length
     mini_archive_type.innerText = bloglistdata.typedata.length
     mini_archive_class.innerText = bloglistdata.typedata.length
   }
-
   //头像点击转动样式
   Rotate = (i = 0) => {
     if (this.state.index == 1) {
@@ -86,11 +132,9 @@ export default class BlogPage extends Component {
 
     }
   }
-
   render() {
     const { Link } = Anchor
     return (
-
       <div className='HomePage'>
         <HeaderNav />
         {/* 顶部容器 */}
@@ -98,13 +142,13 @@ export default class BlogPage extends Component {
           <div className="name">
             <div className='avatar' onClick={() => this.Rotate(0)}></div>
             <span>Lyra的秘密基地</span>
-            <div id="yiyan"></div>
+            <div className="yiyan">
+              <span id='yiyan'></span>
+            </div>
           </div>
           <div className='topbottom'>
             <div className="down">
-              <Link href="#blogcontainer" title={<DownOutlined style={{ 'fontSize': '30px', 'fontWeight': '900', 'color': '#fff' }} />}>
-
-              </Link>
+              <Link href="#blogcontainer" title={<DownOutlined style={{ 'fontSize': '30px', 'fontWeight': '900', 'color': '#fff' }} />}></Link>
             </div>
 
           </div>
@@ -112,10 +156,8 @@ export default class BlogPage extends Component {
         <div className="middlepage">
           {/*博客表单  */}
           <div id='blogcontainer' className="blogcontainer">
-            <BlogList handleData={this.handleData.bind(this)} />
+            {this.state.blogdatadeliver ? <BlogList handleData={this.state.blogdata} /> : null}
           </div>
-
-
           {/* 杂项 */}
           <div className="right">
             {/* 个人简介 */}
@@ -211,19 +253,18 @@ export default class BlogPage extends Component {
                     <use xlinkHref='#planet' />
                   </svg></a></li>
               </ul>
-            </div>
-            {/* 归档预览 */}
 
+            </div>
+            {/* BlogPreview */}
+            {this.state.blogdatadeliver ? <BlogPreviewList data={this.state.blogdata} /> : null}
           </div>
         </div>
-
         {/* 底部容器 */}
         <div className="bottomwrapper">
           <BotttomNav />
+          <BACKTOP />
         </div>
-        <BACKTOP />
-      </div >
-
+      </div>
     )
   }
 }

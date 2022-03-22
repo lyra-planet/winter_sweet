@@ -1,3 +1,8 @@
+.HomePage{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 248, 250)
+}
 .HomePage>.topwrap{
     /* background-image: url('../../../source/HomePageBacground.png'); */
     /* background-color: var(--Middle); */
@@ -24,7 +29,7 @@
 .name .avatar{
     width: 150px;
     height: 150px;
-    background-image: url('../../../source/img/avatar.jpg');
+    background-image: url('../../../source/img/avatar.png');
     background-size: contain;
     border-radius: 50%;
     margin-bottom: 40px;
@@ -85,6 +90,10 @@ transition: all 0.3s;
     from {transform:translateY(0px);opacity: 0.6; }
     to {transform:translateY(10px);opacity: 1;}
 }
+.yiyan{
+    font-size: 17px;
+    margin-top: 10px;
+}
 #yiyan{
     text-align: center;
     color: var(--Snow);
@@ -96,11 +105,11 @@ transition: all 0.3s;
     margin-top: 20px;
     cursor: pointer;
 }
-#yiyan::before{
+.yiyan::before{
     content: '<';
     color: var(--Light);
 }
-#yiyan::after{
+.yiyan::after{
     content: '>';
     color: var(--Light);
 }
@@ -115,7 +124,12 @@ transition: all 0.3s;
 display: flex;
 justify-content: center;
 }
-
+.right{
+    top: 10px;
+    position: sticky;
+    height: 800px;
+    margin-bottom: 130px;
+}
 .right .myself{
     /* justify-content: center; */
     align-items: center;
@@ -124,8 +138,6 @@ justify-content: center;
     padding: 20px;
     border-radius: 20px;
     margin-top: 60px;
-    top: 80px;
-    position: sticky;
     width: 240px;
     min-width: 200px;
     height: 400px;
@@ -147,7 +159,7 @@ justify-content: center;
     height: 120px;
     min-height: 120px;
     min-width: 120px;
-    background-image: url('../../../source/img/avatar.jpg');
+    background-image: url('../../../source/img/avatar.png');
     background-size: contain;
     border-radius: 50%;
     transition: all 0.3s;
@@ -168,12 +180,14 @@ justify-content: center;
     flex-direction: column;
     text-align: center;
     font-size: 18px;
+    user-select: none;
 }
 .right .myself .miniarchive li div{
     color: var(--TextGray);
     margin-top: 10px;
     font-size: 24px;
     font-weight: 700;
+    user-select: none;
 }
 .right .myself .links{
     color: var(--TextGray);
@@ -190,10 +204,12 @@ margin: 3px;
 
 .right .myself h1{
     font-size: 30px;
+    user-select: none;
 }
 .right .myself>span{
     margin: 8px 0px 10px 0px;
     font-size: 18px;
+    user-select: none;
 }
 .right .myself .followme{
     justify-content: center;
@@ -212,6 +228,7 @@ margin: 3px;
     display: flex;
     align-items: center;
     z-index: 10;
+    user-select: none;
 }
 .right .myself .followme::after{
     content: '';
@@ -240,3 +257,5 @@ fill: #fff;
 .links .icon:last-of-type:hover{
     transform: scale(120%);
 }
+
+
