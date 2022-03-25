@@ -3,7 +3,7 @@ import {BackTop} from 'antd'
 import './index.css'
 export default class BACKTOP extends Component {
 
-  componentDidUpdate(){
+  componentDidMount(){
         window.addEventListener('scroll',this.bindHandleScroll)
         let backtop = document.querySelector('.backtop')
         backtop.onmouseenter=()=>{
@@ -13,6 +13,9 @@ export default class BACKTOP extends Component {
           backtop.style.transform=('scale(100%)')
         }          
       }
+      componentWillUnmount(){
+        window.removeEventListener('scroll',this.bindHandleScroll)
+    }
     bindHandleScroll=(e)=>{
         const scrollTop =document.documentElement.scrollTop
         const backtop = document.documentElement.querySelector('.backtop')

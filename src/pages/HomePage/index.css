@@ -127,8 +127,8 @@ justify-content: center;
 .right{
     top: 10px;
     position: sticky;
-    height: 800px;
-    margin-bottom: 130px;
+    height: 100%;
+    margin-bottom: 60px;
 }
 .right .myself{
     /* justify-content: center; */
@@ -219,6 +219,7 @@ margin: 3px;
     margin: 10px;
     color: #fff;
     height: 30px;
+    min-height: 30px;
     background-color: #FF6666;
     position: relative;
     transition: all 0.2s;

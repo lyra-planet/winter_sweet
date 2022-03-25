@@ -1,43 +1,47 @@
 .blogpage{
 display: flex;
 /* background-image: url('../../../source/img/HomePageBackground.png'); */
-background-color: rgb(255, 232, 237);
+background-color: rgb(255, 248, 250);
 background-attachment: fixed;
 width: 100%;
+justify-content: space-around;
+}
+h1{
+    font-size: 50px !important;
 }
 .blogpagebox{
     margin-top: 20px;
     display: flex;
-    justify-content:space-between;
+    justify-content:space-around;
+    margin-bottom: 20px;
 }
 
 /* left */
 .blogpagebox .left{
     background-color: rgba(255,255,255,0.98);
     box-shadow: 0 0 2px rgba(0,0,0, 0.3);
-    margin-right: 20px;
-    margin-left: 10px;
+    margin-right: 10px;
     transition: all 0.3s;
     position: sticky;
     top: 80px;
     height: 500px;
     flex-grow: 2;
-    width: 30%;
-    max-width: 300px;
+    width: 15%;
+    max-width: 350px;
     border-radius: 20px;
 }
 
 .blogpagebox .left:hover{
     box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+    transform: scale(110%);
 }
 
 
 
 /* middle */
 .blogpagebox .middle{
-    /* width: 300px; */
-    flex-grow: 3;
     width: 60%;
+    min-width: 400px;
     border-radius: 20px;
 }
 .blogpagebox .middle .content{
@@ -45,52 +49,163 @@ width: 100%;
     background-color: rgba(255,255,255,0.98);
 
     box-shadow: 0 0 2px rgba(0,0,0, 0.3);
-    padding:40px 80px;
+    padding:20px 40px;
     transition: all 0.3s;
 }
 .blogpagebox .middle .content:hover{
     box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+    transform: scale(101%);
 }
-
-/* middletop */
-.blogpagebox .middle .middletop{
-    height: 200px;
-    margin-bottom: 10px;
-    background-color: rgba(255,255,255,0.98);
-    box-shadow: 0 0 2px rgba(0,0,0, 0.3);
-    transition: all 0.3s;
-}
-.blogpagebox .middle .middletop:hover{
-    box-shadow: 0 0 10px rgba(0,0,0, 0.3);
-}
-.blogpagebox .middle .middletop .title{
-    font-size: 100px;
-}
-
-
-
-
-
-
-
-
 
 /* right */
 .blogpagebox .right{
-    background-color: rgba(255,255,255,0.98);
-    box-shadow: 0 0 2px rgba(0,0,0, 0.3);
-    width: 30%;
-    max-width: 300px;
-    min-width: 300px;
-    margin-right: 10px;
-    margin-left: 20px;
     position: sticky;
-    top: 80px;
-    border-radius: 20px;
-    transition: all 0.3s;
-    flex-grow: 3;
+    top: 30px;
+    max-width: 350px;
+    margin-left: 10px; 
+    height: 800px;
 }
 
-.blogpagebox .right:hover{
+
+/* 阅读量及写作日期 */
+.blogpagebox .right .readtime{
+    background-color: rgba(255,255,255,0.98);
+    box-shadow: 0 0 2px rgba(0,0,0, 0.3);
+    width: 100%;
+    padding:10px 0;
+    line-height: 30px;
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    transition: all 0.3s;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+.blogpagebox .right .readtime:hover{
     box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+    transform: scale(101%);
+}
+.blogpagebox .right .readtime .time{
+    /* margin-left: 16%; */
+}
+.blogpagebox .right .readtime .time{
+    /* width: 50%; */
+}
+
+/* 评论系统 */
+.blogpagebox .right .comments{
+    background-color: rgba(255,255,255,0.98);
+    box-shadow: 0 0 2px rgba(0,0,0, 0.3);
+    width: 100%;
+    border-radius: 20px;
+    transition: all 0.3s;
+    margin-bottom: 20px;
+    overflow: hidden;
+    height: 720px;
+    transition: all 0.3s;
+}
+.blogpagebox .right .comments:hover{
+    box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+    transform: scale(101%);
+}
+
+/* 打赏系统 */
+.blogpagebox .right .tipping{
+    background-color: rgba(255,255,255,0.98);
+    box-shadow: 0 0 2px rgba(0,0,0, 0.3);
+    width: 100%;
+    border-radius: 20px;
+    transition: all 0.3s;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    line-height: 24px;
+    cursor: pointer;
+}
+.blogpagebox .right .tipping:hover{
+    box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+    transform: scale(101%);
+}
+.blogpagebox .right .tipping>span{
+    display: block;
+    /* margin-top: 30px; */
+    width: 100%;
+    user-select: none;
+}
+
+ .tipping #tippinglist{
+    height: 0;
+    overflow: hidden;
+    transition: all 0.6s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: center;
+}
+.tipping #tippinglist>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.blogpagebox .right .tipping>span::after{
+
+    display: block;
+    content: '';
+    width: 100%;
+    height: 1px;
+    margin-top: 3px;
+    border-top:1px dotted rgb(206, 206, 206);
+}
+#wechat-pay{
+    background-image: url(../../../source/img/weixinzhifu.png);
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#ali-pay{
+    background-image: url(../../../source/img/zhifubaozhifu.jpg);
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+#qq-pay{
+    background-image: url(../../../source/img/qqzhifu.jpg);
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+
+.triangle-down{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.tipping:hover{
+    color: var(--Deep);
+}
+.tipping #tipping-triangle-down:last-of-type,
+.tipping #tipping-icon:last-of-type{
+transition: all 0.3s;
+}
+.tipping:hover #tipping-triangle-down:last-of-type,
+.tipping:hover #tipping-icon:last-of-type{
+fill: var(--Deep);
+}
+#tipping-triangle-down{
+    transition: all 0.6s;
 }

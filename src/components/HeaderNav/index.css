@@ -14,7 +14,7 @@
     line-height: 60px;
     font-size: 20px;
     font-weight: 500;
-    color:var(--Snow);
+    color:var(--Snow) !important;
     position:fixed;
     top: 0;
     z-index: 1000;
@@ -22,11 +22,21 @@
 }
 .headernav.active{
     background-color:var(--Snow);
-    color:var(--TextGray);
+    color:var(--TextGray) !important;
+}
+
+ .headernav.active .travel-link{
+    color: var(--TetGray);
+    text-decoration: none;
+}
+.headernav .travel-link{
+    color: var(--Snow);
+
 }
 .headernav.active .link{
         color: var(--TetGray);
         text-decoration: none;
+
 }
 .headernav>.title{
     cursor: pointer;

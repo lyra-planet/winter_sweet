@@ -1,0 +1,48 @@
+#handle-archive-preivew li{
+    width:100%;
+    margin: 3px;
+    color: rgb(104, 104, 104);
+
+    border-radius: 20px;
+    background-color: var(--Snow);
+    padding: 5px;
+    line-height: 20px;
+    transition: all 0.3s;
+}
+#handle-archive-preivew li:hover{
+    transform: scale(120%);
+    color: var(--Deep);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 23px;
+}
+#handle-archive-preivew li .topbar{
+    display: flex;
+    font-size: 20px;
+    width: 100%;
+    color: inherit;
+    justify-content: space-between;
+    color: rgb(104, 104, 104);
+    transition: all 0.3s;
+
+}
+#handle-archive-preivew li:hover .topbar{
+    color: var(--Deep);
+}
+#handle-archive-preivew li .topbar .title{
+    font-size: 20px;
+    width: 60%;
+    /* color:inherit; */
+}
+#handle-archive-preivew li .topbar .readtime{
+    width: 30%;
+    font-size: 12px;
+    /* color: rgb(104, 104, 104); */
+}
+#handle-archive-preivew li h2{
+    font-size: 13px;
+    color: rgb(104, 104, 104);
+}
+#handle-archive-preivew li h3{
+    font-size: 14px;
+    color: rgb(104, 104, 104);
+}

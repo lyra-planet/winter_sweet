@@ -1,4 +1,29 @@
 #vcomments{
     border: none;
     border-radius:20px;
+    display:block !important;
+}
+.v[data-class=v] .veditor {
+    background-image: url(../../../source/img/jiaranwebp.webp);
+    background-size:100px;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.v[data-class="v"] .vwrap {
+    border: 1px solid #f0f0f0;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    padding: 10px;
+}
+.v[data-class="v"] .vcards {
+    width: 100%;
+    padding: 0 10px;
+    height: 400px;
+    overflow-y: scroll;
+}
+.v[data-class="v"] .txt-right {
+    padding: 10px;
+    text-align: right;
 }

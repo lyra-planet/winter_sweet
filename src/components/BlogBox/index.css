@@ -47,6 +47,7 @@ width: 80%;
     display: block;
     margin-bottom:20px;
     transition: all 0.2s;
+    width: 100%;
 }
 .textbox>.title:hover{
     color: var(--Deep);
@@ -58,16 +59,16 @@ width: 80%;
     /* position: absolute; */
     bottom: 0px;
     justify-content: space-around;
-    width: 60%;
+    width: 80%;
 }
-.textbox>.textfun>li{
+.textbox>.textfun>div{
     display: flex;
     font-size: 15px;
     align-items:center;
     transition: all 0.2s;
     text-align: center;
 }
-.textbox>.textfun>li:hover{
+.textbox>.textfun>div:hover{
     transform: scale(102%);
     color: var(--Deep);
 }

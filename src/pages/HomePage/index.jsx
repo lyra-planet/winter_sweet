@@ -6,14 +6,13 @@ import Typed from 'typed.js'
 import { DownOutlined, GithubOutlined } from '@ant-design/icons'
 import './index.css'
 import '../../components/IconUse'
-
 import HeaderNav from '../../components/HeaderNav'
 import BotttomNav from '../../components/BottomNav'
 import api from '../../api'
 import BACKTOP from '../../components/BackTop'
 import BlogList from '../../components/BlogList'
 import BlogPreviewList from '../../components/BlogPreviewList'
-
+import LazyLoad from '../../components/LazyLoad'
 
 export default class BlogPage extends Component {
   constructor(props) {
@@ -22,12 +21,11 @@ export default class BlogPage extends Component {
       index: 1,
       bloglist: {},
       length: '',
-      // BlogListCopy
       pattern: /<p>[\s\S]*?<\/p>/,
       blogdata: [],
       blogpattern: [],
-      blogdatadeliver: false
-      /////////////
+      blogdatadeliver: false,
+
     }
   }
   style = {
@@ -39,7 +37,9 @@ export default class BlogPage extends Component {
     'height': '20px',
   }
 
+
   componentDidMount() {
+
     api.yiyan().then(res => {
       var options = {
         strings: [res.data.text],
@@ -47,22 +47,7 @@ export default class BlogPage extends Component {
       }
       var typed = new Typed('#yiyan', options)
     })
-    //从服务器获取数据并处理分发数据
-    api.getmdfile().then(res => {
-      let blogdata = res.data.map(data => {
-        let patterned = data.match(this.state.pattern)[0]
-        let patternedArray = patterned.replace('<p>', '').replace('</p>', '').split(/[\s:]/g)
-        let title = patternedArray[3]
-        let time = patternedArray[7]
-        let type = patternedArray[13]
-        return {
-          title,
-          time,
-          type,
-          review: data.replace(patterned, '').replace('<hr>\n\n<hr>', '').match(/[\s\S]*<!-- more -->/),
-          data: data.replace(patterned, '').replace('<hr>\n\n<hr>', '')
-        }
-      })
+    let blogdata = this.props.blogdata
       let typedata = []
       blogdata.forEach(blog => {
         if (typedata.length == 0) {
@@ -86,8 +71,16 @@ export default class BlogPage extends Component {
       this.setState({ blogdata })
       this.setState({ blogdatadeliver: true })
       this.handleData(data)
-    }).catch(err => { console.log(err) })
-    //////////////
+ 
+  }
+
+  handleIndex=(index)=>{
+    this.props.handleIndex(index)
+  }
+
+  handleBlock=(index)=>{
+    // console.log(index)
+    this.props.handleBlock(index)
   }
 
 
@@ -132,6 +125,10 @@ export default class BlogPage extends Component {
 
     }
   }
+  componentWillUnmount(){
+    const scrollTop =document.documentElement.scrollTop
+    // this.props.handlePosY(scrollTop)
+  }
   render() {
     const { Link } = Anchor
     return (
@@ -156,7 +153,8 @@ export default class BlogPage extends Component {
         <div className="middlepage">
           {/*博客表单  */}
           <div id='blogcontainer' className="blogcontainer">
-            {this.state.blogdatadeliver ? <BlogList handleData={this.state.blogdata} /> : null}
+            {this.state.blogdatadeliver ? <BlogList handleInitialize={this.props.handleInitialize} initialize={this.props.initialize} handleData={this.state.blogdata}  /> : null}
+            {/* {this.state.blogdatadeliver ? <LazyLoad blocklength={this.props.blocklength} index={this.props.index} handleIndex={this.handleIndex} handleBlock={this.props.handleBlock} /> : null} */}
           </div>
           {/* 杂项 */}
           <div className="right">

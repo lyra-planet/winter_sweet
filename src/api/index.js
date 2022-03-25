@@ -6,13 +6,14 @@ const base = {
 }
 const api = {
 
-    //获取服务器中的md文件
-    getmdfile(){
-        return axios.get(base.baseURL+base.getMdFile)
+    //初始化
+    Initialize(){
+        return axios.post(base.baseURL+base.getMdFile,{index:0})
     },
-
-
-
+    // 数据区块更新
+    BlockUpdate(index){
+        return axios.post(base.baseURL+base.getMdFile,{index:index})
+    },
     // 获取每日一言
     yiyan(){
         return axios.get(`https://api.dzzui.com/api/yiyan?format=json`)

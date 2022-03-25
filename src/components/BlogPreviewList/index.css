@@ -6,36 +6,6 @@
     align-items: center;
     width: 100%;
 }
-#handle-archive-preivew li{
-    width:100%;
-    margin: 3px;
-}
-#handle-archive-preivew li .topbar{
-    display: flex;
-    font-size: 20px;
-    width: 100%;
-
-    justify-content: space-between;
-
-}
-#handle-archive-preivew li .topbar .title{
-    font-size: 20px;
-    width: 60%;
-    color: rgb(104, 104, 104);
-}
-#handle-archive-preivew li .topbar .readtime{
-    width: 30%;
-    font-size: 12px;
-    color: rgb(104, 104, 104);
-}
-#handle-archive-preivew li h2{
-    font-size: 13px;
-    color: rgb(104, 104, 104);
-}
-#handle-archive-preivew li h3{
-    font-size: 14px;
-    color: rgb(104, 104, 104);
-}
 
 /* 归档预览 */
 .handle-archive-preivew{
@@ -57,6 +27,7 @@
 .handle-archive-preivew:hover{
     box-shadow: 0 0 10px rgba(0,0,0, 0.2);
         transform: scale(101%) translateY(-2px);
+
 }
 .handle-archive-preivew>h2{
     display: flex;
