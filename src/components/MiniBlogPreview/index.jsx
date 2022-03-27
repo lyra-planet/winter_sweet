@@ -8,10 +8,10 @@ import './index.css'
 export default class index extends Component {
     render() {
         const {blog}=this.props
-
+        console.log(blog)
         return (
             <li>
-                <Link to={`/blogpage/lyra${encodeURI(blog.title)}`}>
+                <Link to={`/blogpage/lyra${encodeURI(blog.title)}`} state={{title:blog.title}} >
                     <div className="topbar">
                         <div className='title'>
                             {blog.title}
@@ -24,7 +24,7 @@ export default class index extends Component {
                         </div>
                     </div>
                     <h2>{blog.create_time}--{blog.update_time}</h2>
-                    <h3>{blog.type}</h3>
+                    <h3>{blog.tags[0]}</h3>
                     
                 </Link>
                 <div className="comments-none" style={{'display':'none'}}>

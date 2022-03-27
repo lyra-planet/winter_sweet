@@ -47,19 +47,45 @@ conn.connect(err => {
 
 readFile('./source/post')
 
-app.post('/api/getmdFile', (req, res) => {
-  let MYSQL_STR = 'select * from md_database'
+
+
+
+// 初始化
+app.post('/api/initialize',(req,res)=>{
+  readFile('./source/post')
+  let MYSQL_STR = 'select title,tags_str,classes_str,createtime,updatetime from md_database'
   conn.query(MYSQL_STR, (err, data) => {
     if (err) throw err
-    let length=BlogListLazy(BlogListReverse(data)).block_length
-    let data2=BlogListLazy(BlogListReverse(data)).block_data
-    console.log(req.body)
-    res.send({block_data:data2[req.body.index],block_length:length})
+    console.log(data)
+    res.send(BlogListReverse(data))
+  })  
+})
+
+//数据博客表单懒加载发送 不需要发送文章内容
+app.post('/api/getbloglist', (req, res) => {
+  let MYSQL_STR = 'select title,tags_str,classes_str,review,createtime,updatetime from md_database'
+  conn.query(MYSQL_STR, (err, data) => {
+    if (err) throw err
+    let length = BlogListLazy(BlogListReverse(data)).block_length
+    let data2 = BlogListLazy(BlogListReverse(data)).block_data
+    console.log(data2)
+    res.send({
+      block_data: data2[req.body.index],
+      // block_data: data2,
+      block_length: length
+    })
   })
 })
 
-
-
+// 点击博客页面发送文章内容
+app.post('/api/getblogfile',(req,res)=>{
+  console.log(req.body)
+  let MYSQL_STR = `select * from md_database where title='${req.body.title}'`
+  conn.query(MYSQL_STR, (err,data)=>{
+    console.log(data)
+    res.send(data)
+  })
+})
 
 // BLogList数据翻转
 BlogListReverse = (data_str) => {
@@ -71,26 +97,27 @@ BlogListReverse = (data_str) => {
   return DataReverse
 }
 
+
 //实现数据的懒加载
-BlogListLazy=(data_str)=>{
+BlogListLazy = (data_str) => {
   const DataBefore = data_str
   let length = DataBefore.length
-  const DataAfter=[]
+  const DataAfter = []
   // 五个为一组 获取组数
-  let block_length = parseInt(length/5)
+  let block_length = parseInt(length / 5)
   //获取余数
-  const block_left=length%5
-  if(block_left!=0){
+  const block_left = length % 5
+  if (block_left != 0) {
     block_length++
   }
-  for(let i =0;i<block_length;i++){
-    const Block = DataBefore.slice(0+i*5,5+i*5)
-    DataAfter.push(Block) 
+  for (let i = 0; i < block_length; i++) {
+    const Block = DataBefore.slice(0 + i * 5, 5 + i * 5)
+    DataAfter.push(Block)
   }
   return {
-    block_length:block_length,
-    block_data:DataAfter
-    
+    block_length: block_length,
+    block_data: DataAfter
+
   }
 }
 // Mysql监听BLog文件的改变并修改
@@ -101,10 +128,40 @@ function readFile(filepath) {
       fs.readFile(`./source/post/${data}`, (err, data2) => {
         if (err) console.log(err)
         let data3 = marked.parse(data2.toString('utf-8'))
+        //---------------------处理数据----------------------
+        // 第一次配对将<!-- more -->之前的内容提取出来
+        let patterned = data3.match(/[\s\S]*<!-- more -->/)[0]
+        // console.log(patterned)
+        // 将博客文章数据提取出来
+        let blogdata = data3.replace(patterned, '')
+        // 第二次配对将标签卡提取出来
+        let patterneCard = patterned.match(/<hr>[\s\S]*<hr>/)[0]
+        // console.log(patterneCard)
+        //将预览内容展示出来
+        let review = patterned.replace(patterneCard, '')
+        //将标签卡细化提取
+        patterneCard = patterneCard.match(/<p>[\s\S]*<\/p>/)[0]
+        // console.log(patterneCard)
+        //将标题从标签卡中提取出来 将标题提示符去除
+        let title = patterneCard.match(/title:.*\n/)[0].replace('\n', '').replace(/title:[ ]/, '')
+        //将标签集从标签卡中提取出来 将标签提示符去除
+        let tags_str = patterneCard.match(/tags:.*\n/)[0].replace('\n', '').match(/[' '].*/)[0]
+        //将类集从标签卡中提取出来 将类提示符去除 并分割变成数组
+        let classes_str = patterneCard.match(/class:.*<\/p>/)[0].replace(/<\/p>/, '').match(/[' '].*/)[0]
+        //----------------------------------------------------
         let sqlStr = `
-          insert into md_database (blog_name,blog_file) 
-          values('${data}','${data3}')
-          on duplicate key update blog_file = '${data3}'`
+          insert into md_database (
+            blog_file_name,title,review,data,tags_str,classes_str
+            ) 
+          values(
+            '${data}','${title}','${review}','${blogdata}','${tags_str}','${classes_str}'
+            )
+          on duplicate key update title = '${title}',
+                                  review= '${review}',
+                                  data = '${blogdata}',
+                                  tags_str = '${tags_str}',
+                                  classes_str='${classes_str}'
+                                  `
         conn.query(sqlStr, (err) => {
           if (err) {
             throw err.message

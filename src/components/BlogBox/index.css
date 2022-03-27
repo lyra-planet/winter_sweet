@@ -105,7 +105,9 @@ width: 80%;
     position: relative;
     z-index: 100;
 }
-
+.leftbox{
+    display: flex;
+}
 .archivelinkbox:hover{
     color: #fff;
     /* background-color: var(--Shallow); */
@@ -124,8 +126,9 @@ width: 80%;
 .archivelinkboxbox{
     height: 10px;
     align-items: center;
-    width: 120px;
+    /* width: 120px; */
     display: flex;
+    flex-direction: row;
 }
 .archivelinkbox::after{
     content: '';

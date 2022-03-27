@@ -18,7 +18,10 @@ export default class LazyLoad extends Component {
                 index++
                 this.props.handleIndex(index)
                 this.props.handleBlock(index)
-            }else{
+            }
+            if(index==blocklength-1){
+                let loadmore = document.getElementById('loadmore')
+                loadmore.innerText=('没有了捏( *￣▽￣)')
             }
         })
 
@@ -28,7 +31,7 @@ export default class LazyLoad extends Component {
     render() {
         return (
             <div id='loadmore'>
-                LoadMore
+                还想看更多(≧▽≦*)
             </div>
         )
     }

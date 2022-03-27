@@ -30,10 +30,11 @@ export default class index extends Component {
                 <ul className="linkcontainer">
                     {/* 主页 */}
                     <li><Link className='link' to='/'>主页</Link></li>
-                    <li><Link className='link' to='/grocerypage'>图书角</Link></li>
-                    <li><Link className='link' to='/grocerypage'>杂货铺</Link></li>
+                    <li><Link className='link' to='/timeline/'>时间轴</Link></li>
+                    <li><Link className='link' to='/library/'>图书角</Link></li>
+                    <li><Link className='link' to='/grocery/'>杂货铺</Link></li>
                     <li><a className='travel-link' href="https://travellings.link/">友链</a></li>
-                    <li><Link className='link' to='/introduction'>Lyra的小秘密</Link></li>
+                    <li><Link className='link' to='/introduction/'>Lyra的小秘密</Link></li>
                 </ul>
 
             </div>

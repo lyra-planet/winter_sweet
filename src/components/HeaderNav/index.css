@@ -21,25 +21,38 @@
     transition: all 0.3s;
 }
 .headernav.active{
-    background-color:var(--Snow);
+    background-color:rgba(255,255,255,0.9);
+    backdrop-filter:blur(10px);
     color:var(--TextGray) !important;
+    box-shadow:0 0 30px rgba(105, 105, 105, 0.2);
 }
-
+.headernav.active::before{
+    content: "";
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    filter: blur(100px);
+}
  .headernav.active .travel-link{
     color: var(--TetGray);
     text-decoration: none;
 }
 .headernav .travel-link{
     color: var(--Snow);
+    filter: blur(0);
 
 }
 .headernav.active .link{
         color: var(--TetGray);
         text-decoration: none;
+        filter: blur(0);
 
 }
 .headernav>.title{
     cursor: pointer;
+    filter: blur(0);
 }
 .headernav>.linkcontainer{
 display: flex;

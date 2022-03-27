@@ -10,16 +10,6 @@ export default class BlogListPreview extends Component {
         'width': '30px',
         'height': '30px',
     }
-
-    // BLogList数据翻转
-    BlogListReverse = () => {
-        const DataHaventReverse = this.props.data
-        let DataReverse = []
-        for (let i = DataHaventReverse.length - 1; i >= 0; i--) {
-            DataReverse.push(DataHaventReverse[i])
-        }
-        return DataReverse
-    }
     render() {
         return (
             <div className="handle-archive-preivew">

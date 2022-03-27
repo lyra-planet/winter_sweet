@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Anchor } from 'antd';
 import Typed from 'typed.js'
-
+import KeepAlive from 'react-activation'
 import { DownOutlined, GithubOutlined } from '@ant-design/icons'
 import './index.css'
 import '../../components/IconUse'
@@ -13,7 +13,6 @@ import BACKTOP from '../../components/BackTop'
 import BlogList from '../../components/BlogList'
 import BlogPreviewList from '../../components/BlogPreviewList'
 import LazyLoad from '../../components/LazyLoad'
-
 export default class BlogPage extends Component {
   constructor(props) {
     super(props)
@@ -39,7 +38,6 @@ export default class BlogPage extends Component {
 
 
   componentDidMount() {
-
     api.yiyan().then(res => {
       var options = {
         strings: [res.data.text],
@@ -48,43 +46,61 @@ export default class BlogPage extends Component {
       var typed = new Typed('#yiyan', options)
     })
     let blogdata = this.props.blogdata
-      let typedata = []
-      blogdata.forEach(blog => {
-        if (typedata.length == 0) {
-          typedata.push(blog.type)
+    let tagsdata = []
+    let classesdata = []
+    // 计算tag的数量
+    let count = 0
+    blogdata.forEach(blog => {
+      blog.tags.forEach((tag)=>{
+        if (tagsdata.length == 0) {
+          tagsdata.push(tag)
         } else {
-          let count = 0
-          for (let i = 0; i < typedata.length; i++) {
-            if (typedata[i] != blog.type) {
+          for (let i = 0; i < tagsdata.length; i++) {
+            if (tagsdata[i] != tag) {
               count++
             }
           }
-          if (count == typedata.length) {
-            typedata.push(blog.type)
+          if (count == tagsdata.length) {
+            tagsdata.push(tag)
           }
         }
       })
-      let data = {
-        fulldata: blogdata,
-        typedata: typedata,
-      }
-      this.setState({ blogdata })
-      this.setState({ blogdatadeliver: true })
-      this.handleData(data)
- 
+    })
+    // 计算class的数量
+    count = 0
+    blogdata.forEach(blog => {
+      blog.classes.forEach((tag)=>{
+        if (classesdata.length == 0) {
+          classesdata.push(tag)
+        } else {
+          for (let i = 0; i < classesdata.length; i++) {
+            if (classesdata[i] != tag) {
+              count++
+            }
+          }
+          if (count == classesdata.length) {
+            classesdata.push(tag)
+          }
+        }
+      })
+    })
+    let data = {
+      fulldata: blogdata,
+      tagsdata,
+      classesdata
+    }
+    this.setState({ blogdata })
+    this.setState({ blogdatadeliver: true })
+    this.handleData(data)
   }
 
-  handleIndex=(index)=>{
+  handleIndex = (index) => {
     this.props.handleIndex(index)
   }
 
-  handleBlock=(index)=>{
-    // console.log(index)
+  handleBlock = (index) => {
     this.props.handleBlock(index)
   }
-
-
-
   // 从BlogList获取数据
   handleData = (bloglistdata) => {
     this.setState({ bloglist: bloglistdata })
@@ -93,17 +109,15 @@ export default class BlogPage extends Component {
     const mini_archive_type = document.getElementById('mini-archive-type')
     const mini_archive_class = document.getElementById('mini-archive-class')
     mini_archive_article.innerText = bloglistdata.fulldata.length
-    mini_archive_type.innerText = bloglistdata.typedata.length
-    mini_archive_class.innerText = bloglistdata.typedata.length
+    mini_archive_type.innerText = bloglistdata.tagsdata.length
+    mini_archive_class.innerText = bloglistdata.classesdata.length
   }
   //头像点击转动样式
   Rotate = (i = 0) => {
     if (this.state.index == 1) {
       let avatar = document.querySelectorAll('.avatar')
       setTimeout(() => {
-
         avatar[i].style.animation = ('myfirst2 1s  ease')
-
 
       }, 1)
       avatar[i].style.animation = ('none')
@@ -124,10 +138,6 @@ export default class BlogPage extends Component {
 
 
     }
-  }
-  componentWillUnmount(){
-    const scrollTop =document.documentElement.scrollTop
-    // this.props.handlePosY(scrollTop)
   }
   render() {
     const { Link } = Anchor
@@ -153,8 +163,9 @@ export default class BlogPage extends Component {
         <div className="middlepage">
           {/*博客表单  */}
           <div id='blogcontainer' className="blogcontainer">
-            {this.state.blogdatadeliver ? <BlogList handleInitialize={this.props.handleInitialize} initialize={this.props.initialize} handleData={this.state.blogdata}  /> : null}
-            {/* {this.state.blogdatadeliver ? <LazyLoad blocklength={this.props.blocklength} index={this.props.index} handleIndex={this.handleIndex} handleBlock={this.props.handleBlock} /> : null} */}
+            <KeepAlive>
+              <BlogList />
+            </KeepAlive>
           </div>
           {/* 杂项 */}
           <div className="right">

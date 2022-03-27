@@ -1,5 +1,20 @@
 #loadmore{
-    width: 100px;
-    height: 30px;
-    background-color: #bfa;
+    width: 210px;
+    height: 50px;
+    background-color: var(--Deep);
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--Snow);
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+
+}
+#loadmore:hover{
+    transform: scale(105%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

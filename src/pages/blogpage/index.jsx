@@ -1,24 +1,68 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
+import TocHelper from 'toc-helper'
+import api from '../../api'
 import HeaderNav from '../../components/HeaderNav'
 import Comments from '../../components/Comments'
 import BACKTOP from '../../components/BackTop'
 import BackToHome from '../../components/BackToHome'
 import '../../components/IconUse'
-
 import './index.css'
-export default class BlogPage extends Component {
+import { useLocation} from 'react-router-dom'
+import { createBrowserHistory, createMemoryHistory } from 'history'
+
+function myWithRouter(BlogPage) {
+  let save={}
+  return (props) => {
+    let location = useLocation()
+    const params = {
+      state:location.state
+    }
+    console.log(params)
+    if(params.state!=null){
+      save=params
+    }
+    return <BlogPage {...props} params={save}/>
+  }
+} 
+
+
+
+class BlogPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      index: 0
+      index: 0,
+      blogdata:{},
+      stateupdate:false
     }
+    this.ref=null
   }
 
   componentDidMount() {
-    const { title,review, data } = this.props
-    let blogcontent = document.getElementById(`blogpage${title}`)
-    blogcontent.innerHTML = data.replace(review, '')
+    this.LoadBlogFile(this.props.params.state.title)
+    
   }
+
+  LoadBlogFile=(title)=>{
+    api.BlogFileLoad(title).then(res=>{
+      const {title} = this.props.params.state
+      let blogcontent = document.getElementById(`blogpage${title}`)
+      this.setState(({stateupdate:false}))
+      let blogdata={
+        title:res.data[0].title,
+        updatetime:res.data[0].updatetime.slice(0,10),
+        createtime:res.data[0].createtime.slice(0,10)
+      }
+      this.setState({blogdata})
+      this.setState(({stateupdate:true}))
+      blogcontent.innerHTML = res.data[0].data
+      let a =new TocHelper(this.ref,{
+        contentSelector:document.querySelector('.content'),
+        collapsedLevel:2,
+      })
+    })
+  }
+
 
 
   tipping = () => {
@@ -39,32 +83,22 @@ export default class BlogPage extends Component {
 
 
   }
-
-
   render() {
-    const {title,create_time,update_time,type} = this.props
+    const {blogdata,stateupdate}=this.state
+    const {createtime,updatetime,title}=blogdata
     return (
       <div className='blogpage'>
-        {/* <HeaderNav  style={{'display':'none'}}/> */}
         <div className="blogpagebox">
           {/* left */}
           <div className="left">
-            {/* 相关信息 */}
-            <div className="leftcontent">
-              <div className="title">{title}</div>
-
-              <div className='type'>{type}</div>
-              <div className="date">{create_time}</div>
-            </div>
             {/* 目录*/}
+            <div className='toc' ref={ref => this.ref = ref} ></div>
           </div>
           {/* middle */}
           <div className="middle">
             {/* 正文文章 */}
-            <div className="content markdown-body" id={`blogpage${title}`}></div>
-
+            <div className="content markdown-body" id={`blogpage${this.props.params.state.title}`}></div>
           </div>
-
           {/* right */}
           <div className="right">
             {/* 阅读次数 */}
@@ -82,16 +116,17 @@ export default class BlogPage extends Component {
                 <svg className='icon' style={{ 'width': '20px', 'height': '20px', 'fill': 'var(--Deep)', 'transform': 'translateY(5px)' }}>
                   <use xlinkHref='#calander' />
                 </svg>
-                {create_time}--
+                {createtime}--
                 <svg className='icon' style={{ 'width': '20px', 'height': '20px', 'fill': 'var(--Deep)', 'transform': 'translateY(5px)' }}>
                   <use xlinkHref='#calander' />
                 </svg>
-                {update_time}
+                { updatetime}
               </div>
             </div>
             {/* 评论 */}
-            <div id='comments' className='comments'>              
-            <Comments el={title}/>
+            <div id='comments' className='comments'>
+              {stateupdate?<Comments el={this.props.params.state.title}/>:null }              
+            
             </div>
             {/* 打赏 */}
             <div id='tipping' className="tipping" onClick={this.tipping}>
@@ -139,3 +174,5 @@ export default class BlogPage extends Component {
     )
   }
 }
+
+export default myWithRouter(BlogPage)

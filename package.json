@@ -54,6 +54,7 @@
     "postcss-preset-env": "^7.0.1",
     "prompts": "^2.4.2",
     "react": "^17.0.2",
+    "react-activation": "^0.9.12",
     "react-app-polyfill": "^3.0.0",
     "react-dev-utils": "^12.0.0",
     "react-dom": "^17.0.2",
@@ -67,6 +68,7 @@
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.0.2",
     "terser-webpack-plugin": "^5.2.5",
+    "toc-helper": "^2.0.1",
     "typed.js": "^2.0.12",
     "valine": "^1.4.18",
     "web-vitals": "^2.1.4",
@@ -157,6 +159,11 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      "react-activation/babel"
     ]
   }
+
+
 }

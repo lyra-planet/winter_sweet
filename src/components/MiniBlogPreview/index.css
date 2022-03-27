@@ -10,9 +10,9 @@
     transition: all 0.3s;
 }
 #handle-archive-preivew li:hover{
-    transform: scale(120%);
+    transform: scale(105%);
     color: var(--Deep);
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 23px;
 }
 #handle-archive-preivew li .topbar{
