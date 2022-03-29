@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Anchor } from 'antd';
 import KeepAlive from 'react-activation'
-
 import BlogPage from '../pages/HomePage'
 import IntroductionPage from '../pages/IntroductionPage'
 import Grocery from '../pages/GroceryPage'
-import TimeLine from '../pages/TimeLine'
 import Library from '../pages/Library'
-
 import Blogpage from '../pages/blogpage'
-
 import api from '../api'
 
 
@@ -60,22 +56,15 @@ export default class index extends Component {
           <BrowserRouter>
             <Routes>
               {/* 主页 */}
-              <Route path='/*' element={this.state.stateupdate ? 
-              
-              <BlogPage blogdata={this.state.blogdata}/> 
+              <Route path='/*' element={this.state.stateupdate ?<BlogPage blogdata={this.state.blogdata}/> 
               : null
               } exact></Route>
-              
-              {/* 时间轴 */}
-              <Route path='/timeline/' element={<TimeLine blogdata={this.state.blogdata}/>}></Route>
               {/* 图书馆 */}
-              <Route path='/library/' element={<Library blogdata={this.state.blogdata} />}></Route>
+              <Route path='/library/' element={ this.state.stateupdate ?<Library blogdata={this.state.blogdata} />:null}></Route>
               {/* 杂货铺 */}
-              <Route path='/grocery/' element={<Grocery blogdata={this.state.blogdata}/>}></Route>
+              <Route path='/grocery/' element={this.state.stateupdate ?<Grocery blogdata={this.state.blogdata}/>:null}></Route>
               {/* 关于我 */}
-              <Route path='/introduction/' element={<IntroductionPage/>}></Route>
-              
-              
+              <Route path='/introduction/' element={this.state.stateupdate ?<IntroductionPage blogdata={this.state.blogdata}/>:null}></Route>
               {/* 博客页面路由 */}
               <Route path='/blogpage/:blogname' element={<Blogpage/>} />
             </Routes>

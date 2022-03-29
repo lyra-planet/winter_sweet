@@ -7,8 +7,8 @@ export default class index extends Component {
         let ab=el.replace(/[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g,"")
        const Comments = new Valine({
             el:`#lyra${ab.slice(0,6)}`,
-            appId:,
-            appKey:,
+            appId:'uC4cbawG7OfwmyWEGxl7RbCv-gzGzoHsz',
+            appKey:'UrmcfXEa0xyiRPyimwhgkYp7',
             visitor:true,
             path:`/blogpage/lyra${encodeURI(el)}`
        })}

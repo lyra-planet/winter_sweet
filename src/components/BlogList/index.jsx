@@ -26,7 +26,6 @@ export default class BlogList extends Component {
 
     //更新接收到的数据
     BlockUpdate = (index=0) => {
-        console.log(index)
         this.setState({ blogupdate: false })
         api.BlockUpdate(index).then(res => {
             let blogdata=res.data.block_data.map((data)=>{
@@ -53,7 +52,6 @@ export default class BlogList extends Component {
             let blodataBefore = this.state.blogdata.slice(0)
             blogdata = blodataBefore.concat(blogdataNew)
             this.setState({block_length:res.data.block_length})
-            console.log(this.state.block_length)
             this.setState({ blogdata })
             this.setState({ stateupdate: true })
         }).catch(err => { console.log(err) })

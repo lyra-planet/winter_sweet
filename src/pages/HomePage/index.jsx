@@ -13,18 +13,12 @@ import BACKTOP from '../../components/BackTop'
 import BlogList from '../../components/BlogList'
 import BlogPreviewList from '../../components/BlogPreviewList'
 import LazyLoad from '../../components/LazyLoad'
+import AboutMe from '../../components/AboutMe'
 export default class BlogPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      index: 1,
-      bloglist: {},
-      length: '',
-      pattern: /<p>[\s\S]*?<\/p>/,
-      blogdata: [],
-      blogpattern: [],
-      blogdatadeliver: false,
-
+      index: 1
     }
   }
   style = {
@@ -45,73 +39,9 @@ export default class BlogPage extends Component {
       }
       var typed = new Typed('#yiyan', options)
     })
-    let blogdata = this.props.blogdata
-    let tagsdata = []
-    let classesdata = []
-    // 计算tag的数量
-    let count = 0
-    blogdata.forEach(blog => {
-      blog.tags.forEach((tag)=>{
-        if (tagsdata.length == 0) {
-          tagsdata.push(tag)
-        } else {
-          for (let i = 0; i < tagsdata.length; i++) {
-            if (tagsdata[i] != tag) {
-              count++
-            }
-          }
-          if (count == tagsdata.length) {
-            tagsdata.push(tag)
-          }
-        }
-      })
-    })
-    // 计算class的数量
-    count = 0
-    blogdata.forEach(blog => {
-      blog.classes.forEach((tag)=>{
-        if (classesdata.length == 0) {
-          classesdata.push(tag)
-        } else {
-          for (let i = 0; i < classesdata.length; i++) {
-            if (classesdata[i] != tag) {
-              count++
-            }
-          }
-          if (count == classesdata.length) {
-            classesdata.push(tag)
-          }
-        }
-      })
-    })
-    let data = {
-      fulldata: blogdata,
-      tagsdata,
-      classesdata
-    }
-    this.setState({ blogdata })
-    this.setState({ blogdatadeliver: true })
-    this.handleData(data)
+
   }
 
-  handleIndex = (index) => {
-    this.props.handleIndex(index)
-  }
-
-  handleBlock = (index) => {
-    this.props.handleBlock(index)
-  }
-  // 从BlogList获取数据
-  handleData = (bloglistdata) => {
-    this.setState({ bloglist: bloglistdata })
-    // 设置迷你归档
-    const mini_archive_article = document.getElementById('mini-archive-article')
-    const mini_archive_type = document.getElementById('mini-archive-type')
-    const mini_archive_class = document.getElementById('mini-archive-class')
-    mini_archive_article.innerText = bloglistdata.fulldata.length
-    mini_archive_type.innerText = bloglistdata.tagsdata.length
-    mini_archive_class.innerText = bloglistdata.classesdata.length
-  }
   //头像点击转动样式
   Rotate = (i = 0) => {
     if (this.state.index == 1) {
@@ -121,22 +51,6 @@ export default class BlogPage extends Component {
 
       }, 1)
       avatar[i].style.animation = ('none')
-
-
-    }
-  }
-  Rotate2 = (i = 0) => {
-    if (this.state.index == 1) {
-      let avatar = document.querySelectorAll('.avatar')
-      setTimeout(() => {
-
-        avatar[i].style.animation = ('myfirst 1s  ease')
-
-
-      }, 1)
-      avatar[i].style.animation = ('none')
-
-
     }
   }
   render() {
@@ -169,103 +83,7 @@ export default class BlogPage extends Component {
           </div>
           {/* 杂项 */}
           <div className="right">
-            {/* 个人简介 */}
-            <div className="myself">
-              {/* 头像 */}
-              <div className="avatar" onClick={() => this.Rotate2(1)}></div>
-              <h1>Lyra</h1>
-              {/* 个人简介 */}
-              <span>来自星空的美少女</span>
-              {/* 迷你归档 */}
-              <ul className="miniarchive">
-                <li>
-                  <span>文章</span>
-                  <div id='mini-archive-article'>{this.state.bloglist.length}</div>
-                </li>
-                <li>
-                  <span>标签</span>
-                  <div id='mini-archive-type'></div>
-                </li>
-                <li>
-                  <span>分类</span>
-                  <div id='mini-archive-class'>3</div>
-                </li>
-              </ul>
-              {/* followme */}
-              <a href="#" className="followme">
-                <div className="text">
-                  <svg className='icon-followme' style={this.followMeStyle}>
-                    <use xlinkHref='#github-white' />
-                  </svg>Follow Me
-                </div>
-              </a>
-
-              {/* Links */}
-              <ul className="links">
-                {/* QQ */}
-                <li><a href="#">
-                  <svg className='icon' style={{ ...this.style, 'fill': '#12B7F5' }}>
-                    <use xlinkHref='#qq' />
-                  </svg>
-                </a></li>
-                {/* 微信 */}
-                <li><a href="#">
-                  <svg className='icon' style={{ ...this.style, 'fill': '#1AAD19' }}>
-                    <use xlinkHref='#wechat' />
-                  </svg>
-                </a></li>
-                {/* 哔哩哔哩 */}
-                <li>
-                  <a href="#">
-                    <svg className='icon' style={{ ...this.style, 'fill': '#FF8EB3' }}>
-                      <use xlinkHref='#bilibili' />
-                    </svg>
-                  </a>
-                </li>
-                {/* Github */}
-                <li><a href="#">
-                  <svg className='icon' style={{ ...this.style, 'fill': '#6e5494' }}>
-                    <use xlinkHref='#github' />
-                  </svg>
-                </a></li>
-                {/* 知乎 */}
-                <li><a href="#">
-                  <svg className='icon' style={{ ...this.style, 'fill': '#0084FF' }}>
-                    <use xlinkHref='#zhihu' />
-                  </svg>
-                </a></li>
-                {/* Telegram */}
-                <li><a href="#">
-                  <svg className='icon' style={{ ...this.style, 'fill': '#0088CC' }}>
-                    <use xlinkHref='#telegram' />
-                  </svg>
-                </a></li>
-                {/* Twitter */}
-                <li><a href="#">
-                  <svg className='icon' style={{ ...this.style, 'fill': '#1da1f2' }}>
-                    <use xlinkHref='#twitter' />
-                  </svg>
-                </a></li>
-                {/* 网易云 */}
-                <li><a href="#">
-                  <svg className='icon' style={{ ...this.style, 'fill': '#C20C0C' }}>
-                    <use xlinkHref='#netease' />
-                  </svg></a></li>
-                {/* 邮箱 */}
-                <li><a href="#">
-                  <svg className='icon' style={{ ...this.style, 'fill': '#8E71C1' }}>
-                    <use xlinkHref='#email' />
-                  </svg></a></li>
-                {/* QQ群 小星球 */}
-                <li><a href="#">
-                  <svg className='icon' style={{ ...this.style, 'fill': '#6699CC' }}>
-                    <use xlinkHref='#planet' />
-                  </svg></a></li>
-              </ul>
-
-            </div>
-            {/* BlogPreview */}
-            {this.state.blogdatadeliver ? <BlogPreviewList data={this.state.blogdata} /> : null}
+            <AboutMe blogdata={this.props.blogdata}/>
           </div>
         </div>
         {/* 底部容器 */}

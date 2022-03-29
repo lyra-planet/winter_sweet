@@ -8,7 +8,6 @@ import './index.css'
 export default class index extends Component {
     render() {
         const {blog}=this.props
-        console.log(blog)
         return (
             <li>
                 <Link to={`/blogpage/lyra${encodeURI(blog.title)}`} state={{title:blog.title}} >

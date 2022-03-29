@@ -18,9 +18,9 @@
     padding: 10px;
 }
 .v[data-class="v"] .vcards {
-    width: 100%;
+    /* width: 100%; */
     padding: 0 10px;
-    height: 400px;
+    /* height: 400px; */
     overflow-y: scroll;
 }
 .v[data-class="v"] .txt-right {

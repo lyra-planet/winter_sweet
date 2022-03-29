@@ -25,15 +25,15 @@ export default class BlogBox extends Component {
                             <div className='textfun'>
                                 {/* 作者 */}
                                 <div className='author'>
-                                    <svg className='icon' style={{ 'width': '20px', 'height': '20px', 'fill': 'var(--Deep)' }}>
+                                    <svg className='icon' style={{ 'width': '20px', 'height': '20px', 'fill': 'var(--Deep)','transform':'translateX(7px) translateY(0px)' }}>
                                         <use xlinkHref='#user' />
                                     </svg>&nbsp;Lyra</div>
                                 {/* 写作日期 */}
                                 <div className='date'>
-                                    <svg className='icon' style={{ 'width': '20px', 'height': '20px', 'fill': 'var(--Deep)' }}>
+                                    <svg className='icon' style={{ 'width': '20px', 'height': '20px', 'fill': 'var(--Deep)','transform':'translateX(7px) translateY(-2px)'}}>
                                         <use xlinkHref='#calander' />
                                     </svg>&nbsp;{create_time}--
-                                    <svg className='icon' style={{ 'width': '20px', 'height': '20px', 'fill': 'var(--Deep)' }}>
+                                    <svg className='icon' style={{ 'width': '20px', 'height': '20px', 'fill': 'var(--Deep)','transform':'translateX(7px) translateY(-2px)' }}>
                                         <use xlinkHref='#calander' />
                                     </svg>&nbsp;{update_time}
                                 </div>
@@ -63,7 +63,7 @@ export default class BlogBox extends Component {
                         tags.map((tag) => {
                             return (
                                 <div key={tag} className="archivelinkboxbox">
-                                <svg className='icon-type' style={this.followMeStyle}>
+                                <svg className='icon-type' style={{ 'width': '20px', 'height': '20px', 'fill': 'var(--Deep)', 'transform': 'translateY(-1px) translateX(6px)' }}>
                                     <use xlinkHref='#type' />
                                 </svg>
         
