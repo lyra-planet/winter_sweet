@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Comments from '../../components/Comments'
+import Comments from '../Comments'
 export default class TagsMagic extends Component {
   render() {
     return (

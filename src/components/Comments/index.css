@@ -2,9 +2,14 @@
     border: none;
     border-radius:20px;
     display:block !important;
+    background-color: rgba(255,255, 255,0.8);
+    backdrop-filter: blur(10px);
+}
+.comment{
+    background-color: rgba(255,255, 255,0.8) !important;
+    backdrop-filter: blur(10px) !important;
 }
 .v[data-class=v] .veditor {
-    background-image: url(../../../source/img/jiaranwebp.webp);
     background-size:100px;
     background-repeat: no-repeat;
     background-position: right;

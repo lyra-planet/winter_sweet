@@ -39,8 +39,13 @@ export default class BlogPage extends Component {
       }
       var typed = new Typed('#yiyan', options)
     })
-
-  }
+    let custom = this.props.custom
+    let avatar = document.querySelectorAll('.avatar')
+    avatar[1].style.backgroundImage = `url(${custom.photo.avatar})`
+    
+    let backgroundImage = document.querySelectorAll('.HomePage>.topwrap')
+    backgroundImage[0].style.backgroundImage = `url(${custom.photo.background.homepage})`
+}
 
   //头像点击转动样式
   Rotate = (i = 0) => {
@@ -78,12 +83,12 @@ export default class BlogPage extends Component {
           {/*博客表单  */}
           <div id='blogcontainer' className="blogcontainer">
             <KeepAlive>
-              <BlogList />
+              <BlogList custom={this.props.custom} />
             </KeepAlive>
           </div>
           {/* 杂项 */}
           <div className="right">
-            <AboutMe blogdata={this.props.blogdata}/>
+            <AboutMe blogdata={this.props.blogdata} custom={this.props.custom}/>
           </div>
         </div>
         {/* 底部容器 */}

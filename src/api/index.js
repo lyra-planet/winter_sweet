@@ -4,7 +4,9 @@ const base = {
     baseURL:"http://localhost:3300",
     initialize:'/api/initialize',
     getbloglist:'/api/getbloglist',
-    getblogfile:'/api/getblogfile'
+    getblogfile:'/api/getblogfile',
+    getintroucdtion:'/api/getintroduction',
+    getgrocery:'/api/getgrocery'
 }
 const api = {
 
@@ -23,6 +25,14 @@ const api = {
     // 获取每日一言
     yiyan(){
         return axios.get(`https://api.dzzui.com/api/yiyan?format=json`)
+    },
+    // 获取个人介绍
+    Grocery(){
+        return axios.post(base.baseURL+base.getgrocery)
+    },
+    // 获取个人介绍
+    Introduction(){
+        return axios.post(base.baseURL+base.getintroucdtion)
     }
 }
 

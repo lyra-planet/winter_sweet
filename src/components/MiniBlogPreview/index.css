@@ -2,18 +2,10 @@
     width:100%;
     margin: 3px;
     color: rgb(104, 104, 104);
-
     border-radius: 20px;
-    background-color: var(--Snow);
     padding: 5px;
     line-height: 20px;
     transition: all 0.3s;
-}
-#handle-archive-preivew li:hover{
-    transform: scale(105%);
-    color: var(--Deep);
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 23px;
 }
 #handle-archive-preivew li .topbar{
     display: flex;

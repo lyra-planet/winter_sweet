@@ -11,14 +11,14 @@
     height: 400px;
     color: var(--TextGray);
     transition: all 0.3s;
-    background-color: rgba(255,255,255,0.98);
+    background-color: rgba(255,255, 255,0.8);
+    backdrop-filter: blur(10px);
     box-shadow: 0 0 3px rgba(0,0,0, 0.2);
 
 }
 
 .myself:hover{
     box-shadow: 0 0 10px rgba(0,0,0, 0.2);
-        transform: scale(101%) translateY(-2px);
 }
 
 /* 右侧头像 */
@@ -27,9 +27,8 @@
     height: 120px;
     min-height: 120px;
     min-width: 120px;
-    background-image: url('../../../source/img/avatar.png');
-    background-size: contain;
     border-radius: 50%;
+    background-size: contain;
     transition: all 0.3s;
     cursor: pointer;
 }

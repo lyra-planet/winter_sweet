@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Menu, Dropdown } from 'antd';
-import Comments from '../../components/Comments'
+import Comments from '../Comments'
 import { DownOutlined } from '@ant-design/icons';
 export default function TimeLineMagic(props) {
 

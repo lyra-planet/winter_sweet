@@ -20,13 +20,13 @@
     /* height: 300px; */
     color: var(--TextGray);
     transition: all 0.3s;
-    background-color: rgba(255,255,255,0.98);
+    background-color: rgba(255,255, 255,0.8);
+    backdrop-filter: blur(10px);
     box-shadow: 0 0 3px rgba(0,0,0, 0.2);
     position: relative;
 }
 .handle-archive-preivew:hover{
     box-shadow: 0 0 10px rgba(0,0,0, 0.2);
-        transform: scale(101%) translateY(-2px);
 
 }
 .handle-archive-preivew>h2{

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Anchor } from 'antd';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { Anchor } from 'antd'
 import Typed from 'typed.js'
 import KeepAlive from 'react-activation'
 import { DownOutlined, GithubOutlined } from '@ant-design/icons'
 import './index.css'
+import controller from '../../controller'
 import BlogPreviewList from '../BlogPreviewList';
-import AboutMe from '../../components/AboutMe'
 export default class BlogPage extends Component {
     constructor(props) {
         super(props)
@@ -30,6 +30,12 @@ export default class BlogPage extends Component {
         let blogdata = this.props.blogdata
         let tagsdata = []
         let classesdata = []
+        
+        let custom =this.props.custom
+        //设置头像背景图
+        let avatar = document.querySelectorAll('.avatar')
+        avatar[0].style.backgroundImage = `url(${custom.photo.avatar})`
+        
         // 计算tag的数量
         let count = 0
         blogdata.forEach(blog => {
@@ -96,25 +102,22 @@ export default class BlogPage extends Component {
     //头像点击转动样式
     Rotate2 = (i = 0) => {
         if (this.state.index == 1) {
-            let avatar = document.querySelectorAll('.avatar')
+            let avatar = document.querySelectorAll('.avatar2')
             setTimeout(() => {
-
-                avatar[i].style.animation = ('myfirst 1s  ease')
-
-
+                avatar[0].style.animation = ('myfirst 1s  ease')
             }, 1)
-            avatar[i].style.animation = ('none')
-
-
+            avatar[0].style.animation = ('none')
         }
     }
     render() {
+        let custom = this.props.custom
+        let link = custom.link
         return (
             <div className='aboutme'>
                 {/* 个人简介 */}
                 <div className="myself">
                     {/* 头像 */}
-                    <div className="avatar" onClick={() => this.Rotate2(1)}></div>
+                    <div className="avatar avatar2" onClick={() => this.Rotate2(1)}></div>
                     <h1>Lyra</h1>
                     {/* 个人简介 */}
                     <span>来自星空的美少女</span>
@@ -134,7 +137,7 @@ export default class BlogPage extends Component {
                         </li>
                     </ul>
                     {/* followme */}
-                    <a href="#" className="followme">
+                    <a href={`${link.github}`} className="followme">
                         <div className="text">
                             <svg className='icon-followme' style={this.followMeStyle}>
                                 <use xlinkHref='#github-white' />
@@ -145,61 +148,61 @@ export default class BlogPage extends Component {
                     {/* Links */}
                     <ul className="links">
                         {/* QQ */}
-                        <li><a href="#">
+                        <li><a href={`${link.qq}`}>
                             <svg className='icon' style={{ ...this.style, 'fill': '#12B7F5' }}>
                                 <use xlinkHref='#qq' />
                             </svg>
                         </a></li>
                         {/* 微信 */}
-                        <li><a href="#">
+                        <li><a href={`${link.wechat}`}>
                             <svg className='icon' style={{ ...this.style, 'fill': '#1AAD19' }}>
                                 <use xlinkHref='#wechat' />
                             </svg>
                         </a></li>
                         {/* 哔哩哔哩 */}
                         <li>
-                            <a href="#">
+                            <a href={`${link.bilibili}`}>
                                 <svg className='icon' style={{ ...this.style, 'fill': '#FF8EB3' }}>
                                     <use xlinkHref='#bilibili' />
                                 </svg>
                             </a>
                         </li>
                         {/* Github */}
-                        <li><a href="#">
+                        <li><a href={`${link.github}`}>
                             <svg className='icon' style={{ ...this.style, 'fill': '#6e5494' }}>
                                 <use xlinkHref='#github' />
                             </svg>
                         </a></li>
                         {/* 知乎 */}
-                        <li><a href="#">
+                        <li><a href={`${link.zhihu}`}>
                             <svg className='icon' style={{ ...this.style, 'fill': '#0084FF' }}>
                                 <use xlinkHref='#zhihu' />
                             </svg>
                         </a></li>
                         {/* Telegram */}
-                        <li><a href="#">
+                        <li><a href={`${link.telegram}`}>
                             <svg className='icon' style={{ ...this.style, 'fill': '#0088CC' }}>
                                 <use xlinkHref='#telegram' />
                             </svg>
                         </a></li>
                         {/* Twitter */}
-                        <li><a href="#">
+                        <li><a href={`${link.twitter}`}>
                             <svg className='icon' style={{ ...this.style, 'fill': '#1da1f2' }}>
                                 <use xlinkHref='#twitter' />
                             </svg>
                         </a></li>
                         {/* 网易云 */}
-                        <li><a href="#">
+                        <li><a href={`${link.netease}`}>
                             <svg className='icon' style={{ ...this.style, 'fill': '#C20C0C' }}>
                                 <use xlinkHref='#netease' />
                             </svg></a></li>
                         {/* 邮箱 */}
-                        <li><a href="#">
+                        <li><a href={`${link.email}`}>
                             <svg className='icon' style={{ ...this.style, 'fill': '#8E71C1' }}>
                                 <use xlinkHref='#email' />
                             </svg></a></li>
                         {/* QQ群 小星球 */}
-                        <li><a href="#">
+                        <li><a href={`${link.planet}`}>
                             <svg className='icon' style={{ ...this.style, 'fill': '#6699CC' }}>
                                 <use xlinkHref='#planet' />
                             </svg></a></li>

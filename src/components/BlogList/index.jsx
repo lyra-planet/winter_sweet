@@ -66,7 +66,7 @@ export default class BlogList extends Component {
             <div className='BlogList'>
                 {
                     this.state.blogdata.map((blog, index) => {
-                        return <BlogBox key={index} index={index} {...blog} />
+                        return <BlogBox custom={this.props.custom} key={index} index={index} {...blog} />
                     })
                 }
                 {this.state.stateupdate ? <LazyLoad blocklength={this.state.block_length} index={this.state.index} handleIndex={this.handleIndex} handleBlock={this.BlockUpdate} /> : null}

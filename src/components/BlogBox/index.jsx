@@ -17,7 +17,7 @@ export default class BlogBox extends Component {
         const {title,update_time,create_time,tags} = this.props
         return (
             <div className='blogbox'>
-                <Link to={`/blogpage/lyra${encodeURI(title)}/`} state={{title:title}} style={{ 'width': '100%' }}>
+                <Link to={`/blogpage/lyra${encodeURI(title)}/`} state={{title:title,custom:this.props.custom}} style={{ 'width': '100%' }}>
                     <div className="blog">
                         <ul className="textbox">
                             {/* 文章预览 */}

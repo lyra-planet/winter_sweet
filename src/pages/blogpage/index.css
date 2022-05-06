@@ -1,9 +1,8 @@
 .blogpage{
 display: flex;
-/* background-image: url('../../../source/img/HomePageBackground.png'); */
 background-color: rgb(255, 248, 250);
 background-attachment: fixed;
-width: 100%;
+width: 100vw;
 justify-content: space-around;
 }
 h1{
@@ -34,24 +33,26 @@ h1{
 }
 .blogpagebox .left:hover{
     box-shadow: 0 0 10px rgba(0,0,0, 0.3);
+    transform: scale(101%);
 }
 .toc{
     width: 100% !important;
     padding: 10px;
+    pointer-events: none;
 }
 .toc .bitoc-fixed{
     position: relative !important;
     width: 100% !important;
     /* background-color:aqua; */
     top: 0px;
-    font-size: 40px;
+    font-size: 30px;
     user-select: none;
   }
 .toc  .bitoc-hightlight{
    display: none;
 }
 .toc .bitoc-nav a{
-    font-size: 30px;
+    font-size: 20px;
     color: var(--TextGray);
 }
 .toc .bitoc-nav a:hover,.toc .bitoc-nav a.active {
@@ -62,8 +63,8 @@ h1{
 
 /* middle */
 .blogpagebox .middle{
-    width: 60%;
-    min-width: 00px;
+    width: 50%;
+    max-width: 1000px;
     border-radius: 20px;
 }
 .blogpagebox .middle .content{
@@ -151,7 +152,6 @@ h1{
 }
 .blogpagebox .right .tipping>span{
     display: block;
-    /* margin-top: 30px; */
     width: 100%;
     user-select: none;
 }
@@ -159,7 +159,7 @@ h1{
  .tipping #tippinglist{
     height: 0;
     overflow: hidden;
-    transition: all 0.6s;
+    transition: all 0.3s;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -180,28 +180,24 @@ h1{
     margin-top: 3px;
     border-top:1px dotted rgb(206, 206, 206);
 }
-#wechat-pay{
-    background-image: url(../../../source/img/weixinzhifu.png);
+#wechat-pay1{
     width: 200px;
     height: 200px;
     background-repeat: no-repeat;
     background-size: contain;
 }
-#ali-pay{
-    background-image: url(../../../source/img/zhifubaozhifu.jpg);
+#ali-pay1{
     width: 200px;
     height: 200px;
     background-repeat: no-repeat;
     background-size: contain;
 
 }
-#qq-pay{
-    background-image: url(../../../source/img/qqzhifu.jpg);
+#qq-pay1{
     width: 200px;
     height: 200px;
     background-repeat: no-repeat;
     background-size: contain;
-
 }
 
 
@@ -224,5 +220,5 @@ transition: all 0.3s;
 fill: var(--Deep);
 }
 #tipping-triangle-down{
-    transition: all 0.6s;
+    transition: all 0.3s;
 }

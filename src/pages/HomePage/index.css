@@ -4,12 +4,10 @@
     background-color: rgb(255, 248, 250)
 }
 .HomePage>.topwrap{
-    /* background-image: url('../../../source/HomePageBacground.png'); */
-    /* background-color: var(--Middle); */
-    background-image: url('../../../source/img/HomePageBackground.png');
     width: 100vw;
     height: 100vh;
     background-size:cover;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -29,7 +27,6 @@
 .name .avatar{
     width: 150px;
     height: 150px;
-    background-image: url('../../../source/img/avatar.png');
     background-size: contain;
     border-radius: 50%;
     margin-bottom: 40px;
@@ -93,6 +90,7 @@ transition: all 0.3s;
 .yiyan{
     font-size: 17px;
     margin-top: 10px;
+    text-align: center;
 }
 #yiyan{
     text-align: center;
@@ -104,22 +102,21 @@ transition: all 0.3s;
     transition: all 0.3s;
     margin-top: 20px;
     cursor: pointer;
+    
 }
 .yiyan::before{
-    content: '<';
-    color: var(--Light);
+    content: '「';
+    color: var(--Snow);
 }
 .yiyan::after{
-    content: '>';
-    color: var(--Light);
+    content: '」';
+    color: var(--Snow);
 }
 #yiyan:hover{
     /* color: var(--Light); */
     font-size: 20px;
 
 }
-
-
 .middlepage {
 display: flex;
 justify-content: center;

@@ -1,0 +1,56 @@
+
+
+# 图片类
+photo:
+  # 头像
+  avatar: https://pic.imgdb.cn/item/626fe137239250f7c5b34d3b.jpg
+  
+  # 背景类
+  background:
+    # 主界面背景
+    homepage: https://pic.imgdb.cn/item/626fe3f6239250f7c5c3da5c.jpg
+    # 图书角背景
+    library: https://pic.imgdb.cn/item/626fe3f6239250f7c5c3da5c.jpg
+    # 杂货铺背景
+    grocery:
+    # 个人简介背景
+    introduction: https://pic.imgdb.cn/item/626fe3f6239250f7c5c3da5c.jpg
+  
+  # 支付类
+  pay:
+    # qq
+    qq: https://pic.imgdb.cn/item/626fe137239250f7c5b34d3b.jpg
+    # wechat
+    wechat: https://pic.imgdb.cn/item/626fe137239250f7c5b34d3b.jpg
+    # zhifubao
+    zhifubao: https://pic.imgdb.cn/item/626fe137239250f7c5b34d3b.jpg
+  
+  #杂项
+  other:
+    comments_little_photo: https://pic.imgdb.cn/item/626fe137239250f7c5b34d3b.jpg
+
+
+
+
+# 链接类
+link:
+  # QQ
+  qq: https://wpa.qq.com/msgrd?v=3&uin=1170158548&site=qq&menu=yes
+  # 微信
+  wechat:
+  # 哔哩哔哩
+  bilibili:
+  # Github
+  github: https://github.com/lyra-planet/winter_sweet
+  # 知乎
+  zhihu:
+  # Telegram 
+  telegram:
+  # Twitter
+  twitter:
+  # 网易云
+  netease:
+  # 邮箱
+  email:
+  # QQ群
+  planet:

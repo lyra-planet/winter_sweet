@@ -3,8 +3,8 @@
     "db":{
         "user":"lyra",
         "pwd":"ck781208",
-        "host":"127.0.0.1",
-        "port":3300,
+        // "host":"127.0.0.1",
+        // "port":3300,
         "datasource":"myblog"
     }
 }

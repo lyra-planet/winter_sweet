@@ -17,7 +17,6 @@ function myWithRouter(BlogPage) {
     const params = {
       state:location.state
     }
-    console.log(params)
     if(params.state!=null){
       save=params
     }
@@ -39,9 +38,17 @@ class BlogPage extends Component {
   }
 
   componentDidMount() {
-    this.LoadBlogFile(this.props.params.state.title)
+    const scrollTop = document.documentElement.scrollTop
+    let custom=this.props.params.state.custom
+    let qqPay = document.getElementById('qq-pay1')
+    qqPay.style.backgroundImage = `url(${custom.photo.pay.qq})`
+    let cPay = document.getElementById('wechat-pay1')
+    cPay.style.backgroundImage = `url(${custom.photo.pay.wechat})`
+    let aliPay = document.getElementById('ali-pay1')
+    aliPay.style.backgroundImage = `url(${custom.photo.pay.zhifubao})`
     
-  }
+    this.LoadBlogFile(this.props.params.state.title)
+}
 
   LoadBlogFile=(title)=>{
     api.BlogFileLoad(title).then(res=>{
@@ -137,22 +144,28 @@ class BlogPage extends Component {
                 </svg>
               </span>
               <ul id="tippinglist" className="tippinglist">
-                <div className="wechat-pay-box">
-                  <li id='wechat-pay'></li>
+                <div className="wechat-pay">
+                  <li id='wechat-pay1'>
+
+
+                  </li>
                   <svg className='icon' style={{ 'width': '34px', 'height': '34px', 'fill': '#04BE02'}}>
                     <use xlinkHref='#wechat-pay' />
                   </svg>
                 </div>
                 
-                <div className="ali-pay-box">
-                  <li id='ali-pay' ></li>
+                <div className="ali-pay">
+                  <li id='ali-pay1'>
+
+
+                  </li>
                   <svg className='icon' style={{ 'width': '34px', 'height': '34px', 'transform':'translateY(-6px)', 'fill': '#1678ff'}}>
                     <use xlinkHref='#ali-pay' />
                   </svg>
                 </div>
                
                 <div className="qq-pay">
-                  <li id='qq-pay'></li>
+                  <li id='qq-pay1'></li>
                   <svg className='icon' style={{ 'width': '33px', 'height': '33px', 'fill': 'rgb(41, 200, 255)'}}>
                     <use xlinkHref='#qq' />
                   </svg>

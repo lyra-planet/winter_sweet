@@ -35,6 +35,9 @@ export default class TimeLine extends Component {
             typeSpeed: 100
         }
         var typed = new Typed('#mingyan', options)
+        let custom = this.props.custom
+        let backgroundImage = document.querySelectorAll('#TimeLine .topnav')
+        backgroundImage[0].style.backgroundImage = `url(${custom.photo.background.library})`    
         this.BlogInitialize()
 
     }
@@ -204,15 +207,13 @@ export default class TimeLine extends Component {
                             </BackTop>
                             <BackTop visibilityHeight={-100}>
                             <div className="buttom" onClick={() => this.dataChange(2)}>分类库</div>
-                            </BackTop>
-                           
-                            
-                            
+                            </BackTop>  
                         </div>
                     </div>
+
+                    <BottomNav />
                     <BackToHome />
                     <BACKTOP />
-                    <BottomNav />
                 </div>
 
             </div>

@@ -13,7 +13,6 @@
     transition: all 0.3s;
 }
 .blogbox:hover{
-    transform: scale(101%) translateY(-2px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 .blog{
@@ -40,6 +39,7 @@ justify-content: center;
 text-align: center;
 line-height: 30px;
 width: 80%;
+margin-top: 20px;
 }
 
 .textbox>.title{
@@ -51,7 +51,6 @@ width: 80%;
 }
 .textbox>.title:hover{
     color: var(--Deep);
-    transform: scale(110%);
 }
 
 .textbox>.textfun{
@@ -69,7 +68,6 @@ width: 80%;
     text-align: center;
 }
 .textbox>.textfun>div:hover{
-    transform: scale(102%);
     color: var(--Deep);
 }
 

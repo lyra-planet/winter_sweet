@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import Comments from '../../components/Comments'
+import Comments from '../Comments'
 
 
 import './index.css'
@@ -9,8 +9,8 @@ export default class index extends Component {
     render() {
         const {blog}=this.props
         return (
-            <li>
-                <Link to={`/blogpage/lyra${encodeURI(blog.title)}`} state={{title:blog.title}} >
+            <li className='miniblogpreview'>
+                <Link to={`/blogpage/lyra${encodeURI(blog.title)}`}>
                     <div className="topbar">
                         <div className='title'>
                             {blog.title}

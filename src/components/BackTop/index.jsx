@@ -17,7 +17,7 @@ export default class BACKTOP extends Component {
         window.removeEventListener('scroll',this.bindHandleScroll)
     }
     bindHandleScroll=(e)=>{
-        const scrollTop =document.documentElement.scrollTop
+      const scrollTop =document.documentElement.scrollTop
         const backtop = document.documentElement.querySelector('.backtop')
         if(scrollTop>10){
           backtop.style.transform=('scale(100%)')
