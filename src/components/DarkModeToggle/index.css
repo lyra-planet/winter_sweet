@@ -1,0 +1,23 @@
+.dark-mode-toggle{
+    transform: translateY(8px);
+}
+
+.react-toggle-track-check {
+    margin-top: 12px;
+    transform: translateX(-7px);
+    position: relative !;
+    font-size: 20px;
+}
+.react-toggle-track-x {
+    margin-top: 14px;
+    transform: translateX(-7px);
+    position: relative !;
+    font-size: 20px;
+}
+ .react-toggle--checked .react-toggle-track{
+    background-color: var(--Color) !important;
+    border-color: var(--Color) !important;
+}
+.react-toggle--checked:hover .react-toggle-track:hover {
+    background-color: var(--Color) !important;
+}

@@ -1,13 +1,8 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { Menu, Dropdown } from 'antd';
+import {Link} from 'react-router-dom'
 import Comments from '../Comments'
-import { DownOutlined } from '@ant-design/icons';
 export default function TimeLineMagic(props) {
-
-
-    
-  return (
+  return props.data?(
     <div className="linecontainer">
     {
         props.data.map((data) => {
@@ -16,7 +11,7 @@ export default function TimeLineMagic(props) {
                 {
                     data.data.map((data) => {
                         return (
-                            <Link to={`/blogpage/lyra${encodeURI(data.title)}`} key={data.title} state={{ title: data.title }}>
+                            <Link to={`/blogpage/${encodeURI(data.title)}`} key={data.title} state={{ title: data.title }}>
                                 <div className="titlebox">
                                     <div className="top"><div className="title">{data.title}</div><div className="readtime">
                                         <div className="readtime">
@@ -62,5 +57,5 @@ export default function TimeLineMagic(props) {
         })
     }
 </div>
-  )
+  ):<></>
 }

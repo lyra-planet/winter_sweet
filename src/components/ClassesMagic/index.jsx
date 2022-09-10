@@ -13,7 +13,7 @@ export default class ClassesMagic extends Component {
                     {
                         data.data.map((data) => {
                             return (
-                                <Link to={`/blogpage/lyra${encodeURI(data.title)}`} key={data.title} state={{ title: data.title }}>
+                                <Link to={`/blogpage/${encodeURI(data.title)}`} key={data.title} state={{ title: data.title }}>
                                     <div className="titlebox">
                                         <div className="top"><div className="title">{data.title}</div><div className="readtime">
                                             <div className="readtime">

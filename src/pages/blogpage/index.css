@@ -1,6 +1,6 @@
 .blogpage{
 display: flex;
-background-color: rgb(255, 248, 250);
+background-color: var(--color--background);
 background-attachment: fixed;
 width: 100vw;
 justify-content: space-around;

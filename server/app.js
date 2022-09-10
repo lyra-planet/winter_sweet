@@ -33,8 +33,8 @@ app.use(cors()) //解决跨域问题
 // 创建数据库连接 填入数据库信息 
 const conn = mysql.createConnection({
   user: 'root', //用户名
-  password: '', //密码
-  host: '', //主机
+  password: 'ck781208', //密码
+  host: '47.101.185.55', //主机
   database: 'blog_md_database', //数据库名
   charset: 'UTF8MB4'
 })

@@ -16,7 +16,7 @@ export default class index extends Component {
       const {el}=this.props
       let ab=el.replace(/[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g,"")
     return (
-      <div id={`lyra${ab.slice(0,6)}`}>
+      <div id={`${ab.slice(0,6)}`}>
       </div>
     )
   }

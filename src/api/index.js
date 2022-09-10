@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const base = {
-    baseURL:"http://localhost:3300",
+    baseURL:" http://47.101.185.55:3333",
     initialize:'/api/initialize',
     getbloglist:'/api/getbloglist',
     getblogfile:'/api/getblogfile',

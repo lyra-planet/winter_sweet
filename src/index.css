@@ -1,0 +1,11 @@
+@import url('https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css');
+::-webkit-scrollbar{
+    height: 0;
+    width: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    
+}

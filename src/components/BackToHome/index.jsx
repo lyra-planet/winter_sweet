@@ -1,20 +1,16 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import  {LeftOutlined} from '@ant-design/icons'
 import './index.css'
-export default class BackToHome extends Component {
-
-  GoBack=()=>{
-    window.history.go(-1)
-  }
-  render() {
-    return (
-        
-          <div className="backtohome" onClick={this.GoBack}>
-              <LeftOutlined style={{fontSize:'40px',color:'#fff'}}/>        
-              </div>  
 
 
-    )
-  }
+const BackToHome = () => {
+  return (
+    <div className="backtohome" onClick={GoBack}>
+        <LeftOutlined style={{fontSize:'40px',color:'#fff'}}/>        
+    </div>  
+)
 }
+const GoBack=()=>{
+  window.history.go(-1)
+}
+export default BackToHome

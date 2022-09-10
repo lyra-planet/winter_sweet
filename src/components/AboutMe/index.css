@@ -5,16 +5,14 @@
     flex-direction: column;
     padding: 20px;
     border-radius: 20px;
-    margin-top: 60px;
-    width: 240px;
-    min-width: 200px;
+    margin-top: 20px;
+    width:200px;
     height: 400px;
     color: var(--TextGray);
     transition: all 0.3s;
     background-color: rgba(255,255, 255,0.8);
     backdrop-filter: blur(10px);
     box-shadow: 0 0 3px rgba(0,0,0, 0.2);
-
 }
 
 .myself:hover{

@@ -1,0 +1,44 @@
+/* 归档预览 */
+.handle-archive-preivew{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 30px;
+    width: 200px;
+    /* height: 300px; */
+    color: var(--TextGray);
+    transition: all 0.3s;
+    background-color: rgba(255,255, 255,0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 3px rgba(0,0,0, 0.2);
+    position: relative;
+}
+
+#handle-archive-preivew{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+
+
+.handle-archive-preivew:hover{
+    box-shadow: 0 0 10px rgba(0,0,0, 0.2);
+
+}
+.handle-archive-preivew>h2{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 100%;
+    align-items: center;
+    transition: all 0.3s;
+    user-select: none;
+    margin-bottom: 2px;
+}

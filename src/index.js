@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AliveScope } from 'react-activation'
+import './index.css'
 import App from './App'
-ReactDOM.render(
-  <AliveScope>
-  <App/>
-  </AliveScope>
 
+ReactDOM.render(
+    <App/>
   ,
   document.getElementById('root')
 );
